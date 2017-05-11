@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Nels
+ * @author Nels Danielson
  */
 public class Actor implements Serializable{
     

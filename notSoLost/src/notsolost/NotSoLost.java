@@ -9,7 +9,7 @@ import byui.cit260.notSoLost.model.Actor;
 
 /**
  *
- * @author Nels
+ * @author Nels Danielson
  */
 public class NotSoLost {
 
