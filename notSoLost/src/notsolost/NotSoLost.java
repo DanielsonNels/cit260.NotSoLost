@@ -20,7 +20,7 @@ public class NotSoLost {
         Actor actorOne = new Actor();
         
         actorOne.setName("Samuel");
-        actorOne.setDescription("Hairy Beast");
+        actorOne.setDescription("Large Man");
         actorOne.setLocation(1);
         actorOne.setActionMode("Normal");
         actorOne.setEnergyLevel(100);
