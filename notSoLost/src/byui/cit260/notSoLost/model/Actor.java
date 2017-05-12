@@ -21,12 +21,13 @@ public class Actor implements Serializable{
     private String actionMode;
     private double energyLevel;
 
+    
+    // Default Constructor
     public Actor() {
     }
 
     
-    
-    
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -67,6 +68,7 @@ public class Actor implements Serializable{
         this.energyLevel = energyLevel;
     }
 
+    // Hashcode
     @Override
     public int hashCode() {
         int hash = 5;
@@ -77,7 +79,14 @@ public class Actor implements Serializable{
         hash = 37 * hash + (int) (Double.doubleToLongBits(this.energyLevel) ^ (Double.doubleToLongBits(this.energyLevel) >>> 32));
         return hash;
     }
-
+    
+    // To String
+    @Override
+    public String toString() {
+        return "Actor{" + "name=" + name + ", description=" + description + ", location=" + location + ", actionMode=" + actionMode + ", energyLevel=" + energyLevel + '}';
+    }
+    
+    // Equals
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -107,12 +116,5 @@ public class Actor implements Serializable{
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Actor{" + "name=" + name + ", description=" + description + ", location=" + location + ", actionMode=" + actionMode + ", energyLevel=" + energyLevel + '}';
-    }
-    
-    
 }
 
