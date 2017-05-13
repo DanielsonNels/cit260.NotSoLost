@@ -94,38 +94,38 @@ public class NotSoLost {
          
          
         /********************************
-         *      Test ResourceSceneType Class
+         *      Test RegularSceneType Class
          *******************************/
-        RegularSceneType type1 = new RegularSceneType();
+        RegularSceneType Boss = new RegularSceneType();
 
-        type1.setDescription("test");
-        type1.setBlocked("test");
-        type1.setSymbol("test");
+        Boss.setDescription("Local Tribe Leader");
+        Boss.setBlocked("Blocked");
+        Boss.setSymbol("test");
         
-        String type = type1.toString();
+        String type = Boss.toString();
         System.out.println(type);
         
         
         /********************************
          *      Test QuestionScene Class
          *******************************/
-        QuestionScene Scene1 = new QuestionScene();
+        QuestionScene BeachTown = new QuestionScene();
 
-        Scene1.setNoToAnswer("test");
-        Scene1.setBonus("test");
+        BeachTown.setNoToAnswer("Okay, Let me know if you change your mind");
+        BeachTown.setBonus("Thank you! here, take an extra coconut");
         
-        String Scene = Scene1.toString();
+        String Scene = BeachTown.toString();
         System.out.println(Scene);
         
         /********************************
          *      Test Question Class
          *******************************/
-        Question Question1 = new Question();
+        Question BuildFire = new Question();
 
-        Question1.setQuestion("test");
-        Question1.setAnswer("test");
+        BuildFire.setQuestion("Would you like to help me build a fire?");
+        BuildFire.setAnswer("Yes");
         
-        String Question = Question1.toString();
+        String Question = BuildFire.toString();
         System.out.println(Question);
     }
 }
