@@ -10,6 +10,9 @@ import byui.cit260.notSoLost.model.Location;
 import byui.cit260.notSoLost.model.Map;
 import byui.cit260.notSoLost.model.InventoryItem;
 import byui.cit260.notSoLost.model.ResourceScene;
+import byui.cit260.notSoLost.model.RegularSceneType;
+import byui.cit260.notSoLost.model.QuestionScene;
+import byui.cit260.notSoLost.model.Question;
 
 /**
  *
@@ -88,5 +91,41 @@ public class NotSoLost {
          
          String scene = beach.toString();
          System.out.println(scene);
+         
+         
+        /********************************
+         *      Test ResourceSceneType Class
+         *******************************/
+        RegularSceneType type1 = new RegularSceneType();
+
+        type1.setDescription("test");
+        type1.setBlocked("test");
+        type1.setSymbol("test");
+        
+        String type = type1.toString();
+        System.out.println(type);
+        
+        
+        /********************************
+         *      Test QuestionScene Class
+         *******************************/
+        QuestionScene Scene1 = new QuestionScene();
+
+        Scene1.setNoToAnswer("test");
+        Scene1.setBonus("test");
+        
+        String Scene = Scene1.toString();
+        System.out.println(Scene);
+        
+        /********************************
+         *      Test Question Class
+         *******************************/
+        Question Question1 = new Question();
+
+        Question1.setQuestion("test");
+        Question1.setAnswer("test");
+        
+        String Question = Question1.toString();
+        System.out.println(Question);
     }
 }
