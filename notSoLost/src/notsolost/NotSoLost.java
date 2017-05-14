@@ -6,6 +6,8 @@
 package notsolost;
 
 import byui.cit260.notSoLost.model.Actor;
+import byui.cit260.notSoLost.model.Game;
+import byui.cit260.notSoLost.model.Raft;
 import byui.cit260.notSoLost.model.Location;
 import byui.cit260.notSoLost.model.Map;
 import byui.cit260.notSoLost.model.InventoryItem;
@@ -25,6 +27,7 @@ public class NotSoLost {
      */
     public static void main(String[] args) {
         
+        
         /********************************
          *      Test Actor Class
          *******************************/ 
@@ -38,6 +41,35 @@ public class NotSoLost {
         
         String actorInfo = actorOne.toString();
         System.out.println(actorInfo);
+        
+        
+        /********************************
+         *      Test Game Class
+         *******************************/ 
+        Game theGame = new Game();
+        
+        theGame.setScore(35);
+        theGame.setTimeOfDay(8);
+        theGame.setWeather("Sunny");
+        
+        String gameInfo = theGame.toString();
+        System.out.println(gameInfo);
+        
+       
+        /********************************
+         *      Test Raft Class
+         *******************************/ 
+        Raft theRaft = new Raft();
+        
+        theRaft.setHasRope(true);
+        theRaft.setHasPontoons(false);
+        theRaft.setHasFloor(true);
+        theRaft.setHasMast(false);
+        theRaft.setHasSail(false);
+        theRaft.setHasRudder(false);
+        
+        String raftInfo = theRaft.toString();
+        System.out.println(theRaft);
         
         
         /********************************
