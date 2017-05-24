@@ -38,4 +38,32 @@ public class ActorControl {
         return newEnergyLevel;
     } 
     
+    public double calcEnergyRestGain (double currentEnergy, double restHours, double timeOfDay){
+        
+	if (currentEnergy <= 0) {
+		return -1;
+        }
+
+        if (restHours <= 0) {
+		return -1;
+        }
+
+        if (restHours > 10) {
+		return -1;
+        }
+                
+        double energyRestGainPerHour = 2;
+        double restMultiplier = 0;
+        
+        if (timeOfDay <= 6 || timeOfDay >= 20) {
+      		restMultiplier = 1.5;
+        } else {
+		restMultiplier = 1; 
+        }
+        
+        double newEnergyLevel = currentEnergy + (energyRestGainPerHour * restMultiplier * restHours);                
+
+        return newEnergyLevel;
+    }
+    
 }
