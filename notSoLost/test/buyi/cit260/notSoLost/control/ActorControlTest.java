@@ -75,19 +75,30 @@ public class ActorControlTest {
     @Test
     public void calcEnergyRestGain() {
         System.out.println("calcEnergyRestGain");
-        // test case #1
-        double currentEnergy = 0;
+        // test case #1 (Valid)
+        double currentEnergy = 30;
         double timeOfDay = 4;
         double restHours = 2;
         ActorControl instance = new ActorControl();
-        double expResult = -1;
+        double expResult = 36;
         double result = instance.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype.");
-        System.out.println("\tTest Case #1 Actual = " + result + " vs. expected = " + expResult);
+        System.out.println("\tTest Case #1 (Valid) Actual = " + result + " vs. expected = " + expResult);
         
-        // test case #2
+        // test case #2 (Invalid)
+        currentEnergy = 0;
+        timeOfDay = 4;
+        restHours = 2;
+        expResult = -1;
+        result = instance.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
+        assertEquals(expResult, result, 0.0);
+        // TODO review the generated test code and remove the default call to fail.
+        // fail("The test case is a prototype.");
+        System.out.println("\tTest Case #2 (Invalid) Actual = " + result + " vs. expected = " + expResult);
+        
+        // test case #3 (Invalid)
         currentEnergy = 15;
         timeOfDay = 22;
         restHours = 0;
@@ -96,9 +107,9 @@ public class ActorControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype.");
-        System.out.println("\tTest Case #1 Actual = " + result + " vs. expected = " + expResult);
+        System.out.println("\tTest Case #3 (Invalid) Actual = " + result + " vs. expected = " + expResult);
         
-        // test case #3
+        // test case #4 (Invalid)
         currentEnergy = 15;
         timeOfDay = 20;
         restHours = 11;        
@@ -107,6 +118,28 @@ public class ActorControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype.");
-        System.out.println("\tTest Case #1 Actual = " + result + " vs. expected = " + expResult);        
+        System.out.println("\tTest Case #4 (Invalid) Actual = " + result + " vs. expected = " + expResult);  
+        
+        // test case #5 (Boundary)
+        currentEnergy = 1;
+        timeOfDay = 21;
+        restHours = 1;        
+        expResult = 4;
+        result = instance.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
+        assertEquals(expResult, result, 0.0);
+        // TODO review the generated test code and remove the default call to fail.
+        // fail("The test case is a prototype.");
+        System.out.println("\tTest Case #5 (Boundary) Actual = " + result + " vs. expected = " + expResult);
+        
+        // test case #6 (Boundary)
+        currentEnergy = 1;
+        timeOfDay = 3;
+        restHours = 10;        
+        expResult = 31;
+        result = instance.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
+        assertEquals(expResult, result, 0.0);
+        // TODO review the generated test code and remove the default call to fail.
+        // fail("The test case is a prototype.");
+        System.out.println("\tTest Case #6 (Boundary) Actual = " + result + " vs. expected = " + expResult);
     }    
 }
