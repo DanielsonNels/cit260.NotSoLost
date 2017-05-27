@@ -66,4 +66,34 @@ public class ActorControl {
         return newEnergyLevel;
     }
     
+    
+    /*********************************************
+     *                  EAT
+     *********************************************/
+    public double calcFoodEnergy (double currentEnergy, double energyValue, double numFood){
+    
+        
+        if (currentEnergy >= 100 || currentEnergy < 1){
+                return -1;
+        }
+        
+        if (energyValue <= 0){
+                return -1;
+        }
+        
+        if (numFood <= 0){
+                return -1;
+        }
+        
+        if ((currentEnergy + (energyValue * numFood)) > 100){
+                return -1;
+        }
+        
+        else {
+                double newEnergyLevel = (currentEnergy + (energyValue * numFood));
+
+                return newEnergyLevel;
+        }
+        
+    }
 }

@@ -73,7 +73,7 @@ public class ActorControlTest {
      * Test of calcEnergyRestGain method, of class ActorControl.
      */
     @Test
-    public void calcEnergyRestGain() {
+    public void testCalcEnergyRestGain() {
         System.out.println("calcEnergyRestGain");
         // test case #1 (Valid)
         double currentEnergy = 30;
@@ -142,4 +142,77 @@ public class ActorControlTest {
         // fail("The test case is a prototype.");
         System.out.println("\tTest Case #6 (Boundary) Actual = " + result + " vs. expected = " + expResult);
     }    
+
+    /**
+     * Test of eat method, of class ActorControl.
+     */
+    @Test
+    public void testCalcFoodEnergy() {
+        System.out.println("calcFoodEnergy");
+        
+        // Test Case 1 (Valid)
+        double currentEnergy = 30.0;
+        double energyValue = 5.0;
+        double numFood = 2.0;
+        ActorControl instance = new ActorControl();
+        double expResult = 40.0;
+        double result = instance.calcFoodEnergy(currentEnergy, energyValue, numFood);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #1 (Valid) Actual = " + result + " vs. expected = " + expResult);
+        
+        // Test Case 2 (Invalid)
+        currentEnergy = 0.0;
+        energyValue = 1.0;
+        numFood = 4.0;
+        expResult = -1.0;
+        result = instance.calcFoodEnergy(currentEnergy, energyValue, numFood);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #2 (Valid) Actual = " + result + " vs. expected = " + expResult);
+
+        // Test Case 3 (Invalid)
+        currentEnergy = 15.0;
+        energyValue = 5.0;
+        numFood = 0.0;
+        expResult = -1.0;
+        result = instance.calcFoodEnergy(currentEnergy, energyValue, numFood);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #3 (Invalid) Actual = " + result + " vs. expected = " + expResult);
+
+        // Test Case 4 (Invalid)
+        currentEnergy = 100.0;
+        energyValue = 3.0;
+        numFood = 1.0;
+        expResult = -1.0;
+        result = instance.calcFoodEnergy(currentEnergy, energyValue, numFood);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #4 (Invalid) Actual = " + result + " vs. expected = " + expResult);
+
+        // Test Case 5 (Invalid)
+        currentEnergy = 90.0;
+        energyValue = 4.0;
+        numFood = 4.0;
+        expResult = -1.0;
+        result = instance.calcFoodEnergy(currentEnergy, energyValue, numFood);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #5 (Invalid) Actual = " + result + " vs. expected = " + expResult);
+
+        // Test Case 6 (Valid)
+        currentEnergy = 1.0;
+        energyValue = 1.0;
+        numFood = 1.0;
+        expResult = 2.0;
+        result = instance.calcFoodEnergy(currentEnergy, energyValue, numFood);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #6 (Valid) Actual = " + result + " vs. expected = " + expResult);
+        
+        // Test Case 7 (Valid)
+        currentEnergy = 1.0;
+        energyValue = 1.0;
+        numFood = 1.0;
+        expResult = 2.0;
+        result = instance.calcFoodEnergy(currentEnergy, energyValue, numFood);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #7 (Valid) Actual = " + result + " vs. expected = " + expResult);
+    }
+
 }
