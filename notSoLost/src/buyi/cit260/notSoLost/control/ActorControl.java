@@ -10,33 +10,33 @@ package buyi.cit260.notSoLost.control;
  * @author JSaenz
  */
 public class ActorControl {
-    
+
     public double calcEnergyTravelCost (double currentEnergy, double distanceTraveled, double packWeight){
-        
+
         if (packWeight > 40) {
- 		return -1;       
+            return -1;
         }
 
-	if (packWeight < 0) {
-		return -1;          
+        if (packWeight < 0) {
+            return -1;
         }
 
-	if (distanceTraveled < 0) {
- 		return -1;      
+        if (distanceTraveled < 0) {
+            return -1;
         }
-                        
-	if (currentEnergy < 0) {
-		return -1;   
-        }     
-        
+
+        if (currentEnergy < 0) {
+            return -1;
+        }
+
         double energyPerHour = 2;
         double energyPerSpace = 5;
         double energyPerPound = .25;
-        
+
         double newEnergyLevel = currentEnergy - ((distanceTraveled * (energyPerHour + energyPerSpace)) + (energyPerPound * packWeight));
-        
+
         return newEnergyLevel;
-    } 
+    }
     
     public double calcEnergyRestGain (double currentEnergy, double restHours, double timeOfDay){
         
@@ -65,7 +65,7 @@ public class ActorControl {
 
         return newEnergyLevel;
     }
-    
+
     
     /*********************************************
      *                  EAT
@@ -95,5 +95,30 @@ public class ActorControl {
                 return newEnergyLevel;
         }
         
+    }
+    
+       public double calcPackWeight(double currentWeight,
+            double inventoryItemWeight, int inventoryItemQuantity) {
+
+        if (currentWeight < 0) {
+            return -1;
+        }
+
+        if (inventoryItemWeight < 1) {
+            return -1;
+        }
+
+        if (inventoryItemQuantity < 1) {
+            return -1;
+        }
+
+        double newPackWeight = currentWeight
+                + (inventoryItemWeight * inventoryItemQuantity);
+
+        if (newPackWeight > 40) {
+            return -1;
+        }
+
+        return newPackWeight;
     }
 }
