@@ -215,4 +215,96 @@ public class ActorControlTest {
         System.out.println("\tTest Case #7 (Valid) Actual = " + result + " vs. expected = " + expResult);
     }
 
+    /**
+     * Test of calcPackWeight method, of class ActorControl.
+     */
+    @org.junit.Test
+    public void testCalcPackWeight() {
+        System.out.println("calcPackWeight");
+        // test case #1 (Valid)        
+        double currentWeight = 30;
+        double inventoryItemWeight = 2;
+        int inventoryItemQuantity = 3;
+        ActorControl instance = new ActorControl();
+        double expResult = 36;
+        double result = instance.calcPackWeight(currentWeight, inventoryItemWeight, inventoryItemQuantity);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #1 (Valid) Actual = " + result + " vs. expected = " + expResult);
+        
+        
+        // test case #2 (Invalid)        
+        currentWeight = -1;
+        inventoryItemWeight = 2;
+        inventoryItemQuantity = 3;
+        expResult = -1;
+        result = instance.calcPackWeight(currentWeight, inventoryItemWeight, inventoryItemQuantity);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #2 (Invalid) Actual = " + result + " vs. expected = " + expResult);
+        
+        
+        // test case #3 (Invalid)        
+        currentWeight = 15;
+        inventoryItemWeight = -2;
+        inventoryItemQuantity = 25;
+        expResult = -1;
+        result = instance.calcPackWeight(currentWeight, inventoryItemWeight, inventoryItemQuantity);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #3 (Invalid) Actual = " + result + " vs. expected = " + expResult);
+ 
+        // test case #4 (Invalid)        
+        currentWeight = 22;
+        inventoryItemWeight = 1;
+        inventoryItemQuantity = 0;
+        expResult = -1;
+        result = instance.calcPackWeight(currentWeight, inventoryItemWeight, inventoryItemQuantity);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #4 (Invalid) Actual = " + result + " vs. expected = " + expResult);
+        
+        // test case #5 (Invalid)        
+        currentWeight = 35;
+        inventoryItemWeight = 2;
+        inventoryItemQuantity = 3;
+        expResult = -1;
+        result = instance.calcPackWeight(currentWeight, inventoryItemWeight, inventoryItemQuantity);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #5 (Invalid) Actual = " + result + " vs. expected = " + expResult);
+        
+        // test case #6 (Boundary)        
+        currentWeight = 0;
+        inventoryItemWeight = 2;
+        inventoryItemQuantity = 3;
+        expResult = 6;
+        result = instance.calcPackWeight(currentWeight, inventoryItemWeight, inventoryItemQuantity);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #6 (Boundary) Actual = " + result + " vs. expected = " + expResult);
+ 
+        // test case #7 (Boundary)        
+        currentWeight = 17;
+        inventoryItemWeight = 1;
+        inventoryItemQuantity = 2;
+        expResult = 19;
+        result = instance.calcPackWeight(currentWeight, inventoryItemWeight, inventoryItemQuantity);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #7 (Boundary) Actual = " + result + " vs. expected = " + expResult);
+ 
+         // test case #8 (Boundary)        
+        currentWeight = 22;
+        inventoryItemWeight = 2;
+        inventoryItemQuantity = 1;
+        expResult = 24;
+        result = instance.calcPackWeight(currentWeight, inventoryItemWeight, inventoryItemQuantity);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #8 (Boundary) Actual = " + result + " vs. expected = " + expResult);
+ 
+        // test case #9 (Boundary)        
+        currentWeight = 25;
+        inventoryItemWeight = 5;
+        inventoryItemQuantity = 3;
+        expResult = 40;
+        result = instance.calcPackWeight(currentWeight, inventoryItemWeight, inventoryItemQuantity);
+        assertEquals(expResult, result, 0.0);
+        System.out.println("\tTest Case #9 (Boundary) Actual = " + result + " vs. expected = " + expResult);
+ 
+       
+    }
 }
