@@ -5,10 +5,26 @@
  */
 package buyi.cit260.notSoLost.control;
 
+import byui.cit260.notSoLost.model.Player;
+import notsolost.NotSoLost;
+
 /**
  *
  * @author JSaenz
  */
 public class GameControl {
+
+    public static Player createPlayer(String name) {
+        if (name == null) {
+            return null;
+        }
+        
+        Player player = new Player();
+        player.setName(name);
+        
+        NotSoLost.setPlayer(player); // save the player
+        
+        return player;
+    }
     
 }
