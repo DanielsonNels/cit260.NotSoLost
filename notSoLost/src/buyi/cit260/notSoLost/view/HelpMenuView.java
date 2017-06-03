@@ -15,7 +15,7 @@ import buyi.cit260.notSoLost.view.MainMenuView;
 public class HelpMenuView {
     
     private String menu;
-    private String promptMessage = "Please make a selection:";
+    private String promptMessage = "Please make a help menu selection:";
     
     public HelpMenuView(){
         System.out.println ("\n"
@@ -35,9 +35,9 @@ public class HelpMenuView {
         
         boolean done = false; // set flag to not done
         do {
-            // prompt for and get players name
+            // prompt for and get actors name
             String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) { // user wants to quit
+            if (menuOption.toUpperCase().equals("Q")) { // return to main menu
                 MainMenuView mainMenu = new MainMenuView();
                 mainMenu.displayMainMenuView();
             }

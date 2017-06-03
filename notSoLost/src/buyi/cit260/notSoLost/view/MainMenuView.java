@@ -17,7 +17,7 @@ import notsolost.NotSoLost;
 public class MainMenuView {
     
     private String menu;
-    private String promptMessage = "Please make a selection:";
+    private String promptMessage = "Please make a main menu selection:";
     
     public MainMenuView(){
         System.out.println ("\n"
@@ -36,7 +36,7 @@ public class MainMenuView {
         
         boolean done = false; // set flag to not done
         do {
-            // prompt for and get players name
+            // prompt for and get actors name
             String menuOption = this.getMenuOption();
             if (menuOption.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit the game
@@ -97,7 +97,7 @@ public class MainMenuView {
 
     private void startNewGame() {      
         // create a new game
-        GameControl.createNewGame(NotSoLost.getPlayer()); 
+        GameControl.createNewGame(NotSoLost.getActor()); 
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();

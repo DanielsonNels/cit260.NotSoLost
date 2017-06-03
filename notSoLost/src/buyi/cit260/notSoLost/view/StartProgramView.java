@@ -6,7 +6,7 @@
 package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.GameControl;
-import byui.cit260.notSoLost.model.Player;
+import byui.cit260.notSoLost.model.Actor;
 import java.util.Scanner;
 
 /**
@@ -23,13 +23,23 @@ public class StartProgramView {
 
     private void displayBanner() {
         System.out.println(
-                  "\n**************************************************"
-                + "\n* Welcome to Fantasy Island!                     *"
-                + "\n* In this game you find youself ship wrecked and *"
-                + "\n* alone.                                         *"
-                + "\n*                                                *"
-                + "\n* Placeholder----------------------------------  *"
-                + "\n**************************************************"
+                  "\n***************************************************"
+                + "\nStuck on an Island is a role play game. Users will "
+                + "\ntake on the role of a character that they choose a "
+                + "\nname for. The basic objective of this role play    "
+                + "\ngame is this: survive until rescuers can make their"
+                + "\nway to you. Here is the basic story for it. The    "
+                + "\nactor's ship crashed into an island. In the       "
+                + "\nprocess, they have lost all communication with the "
+                + "\noutside world. They are left with a few supplies   "
+                + "\nfrom the boat and goods that are found on the      "
+                + "\nisland itself. As the game begins, actors find    "
+                + "\nthat the goal is for them to use these things      "
+                + "\nwisely to be able to survive until help arrives.   "
+                + "\nIn the case of this game, there will be a certain  "
+                + "\nnumber of actions/turns that the actor must take  "
+                + "\nrather than a time limit to be able to win.        "
+                + "\n***************************************************"
         );
     }
 
@@ -37,17 +47,17 @@ public class StartProgramView {
         
         boolean done = false; // set flag to not done
         do {
-            // prompt for and get players name
-            String playersName = this.getPlayersName(); 
-            if (playersName.toUpperCase().equals("Q")) // user wants to quit
+            // prompt for and get actors name
+            String actorsName = this.getActorsName(); 
+            if (actorsName.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit the game
             
             // do the requested action and display the next view
-            done = this.doAction(playersName);
+            done = this.doAction(actorsName);
         } while (!done);
     }
 
-    private String getPlayersName() {
+    private String getActorsName() {
         
         Scanner keyboard = new Scanner(System.in); // get infile for keyboard
         String value = ""; // value to be returned
@@ -70,12 +80,12 @@ public class StartProgramView {
         return value; // return the value entered
     }
 
-    private boolean doAction(String playersName) {
-        // if the length of the playersName < 2 then
+    private boolean doAction(String actorsName) {
+        // if the length of the actorsName < 2 then
             // display "Invalid name: The name must be > 1 character"
             // return false
             
-        // create Player with specified name
+        // create Actor with specified name
         // if unsuccessful then
             // display "Invalid name: The name is too short"
             // return false
@@ -84,30 +94,30 @@ public class StartProgramView {
         // display mainMenuView
         // return true
         
-        if (playersName.length() < 2) {
-            System.out.println("\n Invalid players name: "
+        if (actorsName.length() < 2) {
+            System.out.println("\n Invalid actors name: "
                     + "The name must be greater than one character in length");
             return false;
         }
         
-        // call createPlayer() control fucntion
-        Player player = GameControl.createPlayer(playersName);
+        // call createActor() control fucntion
+        Actor actor = GameControl.createActor(actorsName);
         
-        if (player == null) { // if unsuccessful
-            System.out.println("\nError creating the player.");
+        if (actor == null) { // if unsuccessful
+            System.out.println("\nError creating the actor.");
             return false;            
         }
         // display next view
-        this.displayNextView(player);
+        this.displayNextView(actor);
         
         return true; // success !
     }
 
-    private void displayNextView(Player player) {
+    private void displayNextView(Actor actor) {
         
         // display a custom welcome message
         System.out.println("\n=========================================="
-                          + "\n Welcome to the game " + player.getName()
+                          + "\n Welcome to the game " + actor.getName()
                           + "\n We hope you have a lot of fun!"
                           + "\n========================================="
                           );

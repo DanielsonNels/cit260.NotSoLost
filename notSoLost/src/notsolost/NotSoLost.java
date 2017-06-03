@@ -7,7 +7,7 @@ package notsolost;
 
 import buyi.cit260.notSoLost.view.StartProgramView;
 import byui.cit260.notSoLost.model.Game;
-import byui.cit260.notSoLost.model.Player;
+import byui.cit260.notSoLost.model.Actor;
 
 
 /**
@@ -26,15 +26,15 @@ public class NotSoLost {
         NotSoLost.currentGame = currentGame;
     }
     
-    public static Player getPlayer() {
-        return player;
+    public static Actor getActor() {
+        return actor;
     }
 
-    public static void setPlayer(Player player) {
-        NotSoLost.player = player;
+    public static void setActor(Actor actor) {
+        NotSoLost.actor = actor;
     }
 
-    private static Player player = null;
+    private static Actor actor = null;
 
     /**
      * @param args the command line arguments
