@@ -5,34 +5,34 @@
  */
 package buyi.cit260.notSoLost.view;
 
-import buyi.cit260.notSoLost.control.GameControl;
-import buyi.cit260.notSoLost.view.GameMenuView;
 import java.util.Scanner;
-import notsolost.NotSoLost;
+import buyi.cit260.notSoLost.view.MainMenuView;
 
 /**
  *
  * @author JSaenz
  */
-public class MainMenuView {
+public class HelpMenuView {
     
     private String menu;
     private String promptMessage = "Please make a selection:";
     
-    public MainMenuView(){
+    public HelpMenuView(){
         System.out.println ("\n"
                           + "\n----------------------------------------------"
-                          + "\n| Main Menu                                  |"
+                          + "\n| Help Menu                                  |"
                           + "\n----------------------------------------------"
-                          + "\nN - Start new game"
-                          + "\nG - Get and start saved game"
-                          + "\nH - Get help on how to play the game"
-                          + "\nS - Save game"
+                          + "\nG - What is the goal of the game?"
+                          + "\nH - How to move?"
+                          + "\nT - How to build tools?"
+                          + "\nF - How to fix the raft?"
+                          + "\nI - How to collect inventory?"
+                          + "\nM - Main menu"
                           + "\nQ - Quit"
                           + "\n----------------------------------------------");
     }
-
-    public void displayMainMenuView() {
+    
+    public void displayHelpMenuView() {
         
         boolean done = false; // set flag to not done
         do {
@@ -47,7 +47,7 @@ public class MainMenuView {
         } while (!done);
         
     }
-
+    
     private String getMenuOption() {
         
         Scanner keyboard = new Scanner(System.in); // get infile for keyboard
@@ -70,50 +70,40 @@ public class MainMenuView {
         
         return value; // return the value entered
     }
-
+    
     private boolean doAction(String choice) {
         
         choice = choice.toUpperCase(); // convert choice to upper case
         
         switch (choice) {
-            case "N": // create and start a new game
-                this.startNewGame();
+            case "G": // create and start a new game
+                System.out.println("What is the goal of the game?"
+                                   + "\nNextline");
                 break;
-            case "G": // get and start an existing game
-                this.startExistingGame();
+            case "H": // get and start an existing game
+                System.out.println("How to move ?"
+                                   + "\nNextline");
                 break;
-            case "H": // display the help menu
-                this.displayHelpMenu();
+            case "T": // display the help menu
+                System.out.println("How to build tools?"
+                                   + "\nNextline");
                 break;
-            case "S": // save the current game
-                this.saveGame();
+            case "F": // save the current game
+                System.out.println("How to fix the raft?"
+                                   + "\nNextline");
+                break;
+            case "I": // save the current game
+                System.out.println("How to collect inventory?"
+                                   + "\nNextline");
+                break;
+            case "M": // save the current game
+                System.out.println("Should call the main menu");
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
         }
         
         return false;
-    }
-
-    private void startNewGame() {      
-        // create a new game
-        GameControl.createNewGame(NotSoLost.getPlayer()); 
-        
-        // display the game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-    }
-
-    private void startExistingGame() {
-        System.out.println("*** startExistingGame fucntion called ***");
-    }
-
-    private void displayHelpMenu() {
-        System.out.println("*** displayHelpMenu fucntion called ***");
-    }
-
-    private void saveGame() {
-        System.out.println("*** saveGame fucntion called ***");
     }
     
 }
