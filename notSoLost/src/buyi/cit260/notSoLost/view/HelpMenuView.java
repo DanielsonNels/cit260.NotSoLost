@@ -27,7 +27,6 @@ public class HelpMenuView {
                           + "\nT - How to build tools?"
                           + "\nF - How to fix the raft?"
                           + "\nI - How to collect inventory?"
-                          + "\nM - Main menu"
                           + "\nQ - Quit"
                           + "\n----------------------------------------------");
     }
@@ -38,8 +37,10 @@ public class HelpMenuView {
         do {
             // prompt for and get players name
             String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game
+            if (menuOption.toUpperCase().equals("Q")) { // user wants to quit
+                MainMenuView mainMenu = new MainMenuView();
+                mainMenu.displayMainMenuView();
+            }
 
             // do the requested action and display the next view
             done = this.doAction(menuOption);
@@ -76,30 +77,52 @@ public class HelpMenuView {
         choice = choice.toUpperCase(); // convert choice to upper case
         
         switch (choice) {
-            case "G": // create and start a new game
-                System.out.println("What is the goal of the game?"
-                                   + "\nNextline");
+            case "G": // What is the goal of the game?
+                System.out.println("\nWhat is the goal of the game?"
+                                   + "\n"                        
+                                   + "\nAfter your ship wrecked on this diserted "
+                                   + "\nisland, your goal is to find enough"
+                                   + "\nmaterials to fix your raft and make your"
+                                   + "\nway back to civilization.");
                 break;
-            case "H": // get and start an existing game
-                System.out.println("How to move ?"
-                                   + "\nNextline");
+            case "H": // How to move ?
+                System.out.println("\nHow to move ?"
+                                   + "\n"                        
+                                   + "\nTo move to a different location on the"
+                                   + "\nisland, use the map game menu option and"
+                                   + "\nselect the desired location.  Be aware that"
+                                   + "\nmoving from location to location requires"
+                                   + "\nthat you have enough enrgy to complete your"
+                                   + "\njourney.");
                 break;
-            case "T": // display the help menu
-                System.out.println("How to build tools?"
-                                   + "\nNextline");
+            case "T": // How to build tools?
+                System.out.println("\nHow to build tools?"
+                                   + "\n"                        
+                                   + "\nExplore the different locations of the"
+                                   + "\nisland and collect the required materials"
+                                   + "\nto build the following tools:"
+                                   + "\n  S - Spear" 
+                                   + "\n  B - Bow (Health must be above 20%)" 
+                                   + "\n  R - Rope" 
+                                   + "\n  T - Trotline (Health must be above 20%)" 
+                                   + "\n  C - Club / Hammer" 
+                                   + "\n  S - Snare");
                 break;
-            case "F": // save the current game
-                System.out.println("How to fix the raft?"
-                                   + "\nNextline");
+            case "F": // How to fix the raft?
+                System.out.println("\nHow to fix the raft?"
+                                   + "\n"
+                                   + "\nNThis will be the most important part of the game. "
+                                   + "\nTo be able to win the game you must build a type of raft "
+                                   + "\nwith the materials found on the island. You can only work "
+                                   + "\non the raft a little at a time when you find certain "
+                                   + "\nresources to use. A percentage will be given for the amount "
+                                   + "\nof work that has been completed on the raft.");
                 break;
-            case "I": // save the current game
-                System.out.println("How to collect inventory?"
-                                   + "\nNextline");
-                break;
-            case "M": // save the current game
-                // display the main menu
-                MainMenuView mainMenu = new MainMenuView();
-                mainMenu.displayMainMenuView();
+            case "I": // How to collect inventory?
+                System.out.println("\nHow to collect inventory?"
+                                   + "\n"
+                                   + "\nExplore the island and collect inventory items by"
+                                   + "\ncollecting as many items as your backpack will carry.");
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
