@@ -37,10 +37,8 @@ public class HelpMenuView {
         do {
             // prompt for and get actors name
             String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) { // return to main menu
-                MainMenuView mainMenu = new MainMenuView();
-                mainMenu.displayMainMenuView();
-            }
+            if (menuOption.toUpperCase().equals("Q"))  // return to main menu
+                return;
 
             // do the requested action and display the next view
             done = this.doAction(menuOption);
