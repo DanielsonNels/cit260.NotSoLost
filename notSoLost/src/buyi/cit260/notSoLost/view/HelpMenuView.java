@@ -18,17 +18,17 @@ public class HelpMenuView {
     private String promptMessage = "Please make a help menu selection:";
     
     public HelpMenuView(){
-        System.out.println ("\n"
-                          + "\n----------------------------------------------"
-                          + "\n| Help Menu                                  |"
-                          + "\n----------------------------------------------"
-                          + "\nG - What is the goal of the game?"
-                          + "\nH - How to move?"
-                          + "\nT - How to build tools?"
-                          + "\nF - How to fix the raft?"
-                          + "\nI - How to collect inventory?"
-                          + "\nQ - Quit"
-                          + "\n----------------------------------------------");
+        menu = "\n"
+            + "\n----------------------------------------------"
+            + "\n| Help Menu                                  |"
+            + "\n----------------------------------------------"
+            + "\nG - What is the goal of the game?"
+            + "\nM - How to move?"
+            + "\nT - How to build tools?"
+            + "\nF - How to fix the raft?"
+            + "\nI - How to collect inventory?"
+            + "\nR - Return to Main menu"
+            + "\n----------------------------------------------";
     }
     
     public void displayHelpMenuView() {
@@ -37,7 +37,7 @@ public class HelpMenuView {
         do {
             // prompt for and get actors name
             String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))  // return to main menu
+            if (menuOption.toUpperCase().equals("R"))  // return to main menu
                 return;
 
             // do the requested action and display the next view
@@ -54,7 +54,7 @@ public class HelpMenuView {
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value is entered
-            System.out.println("\n" + this.promptMessage);
+            System.out.println(this.menu + "\n" + this.promptMessage);
             
             value = keyboard.nextLine(); // get next line typed on keyboard
             value = value.trim(); // trim off leading and trailing blanks
@@ -83,7 +83,7 @@ public class HelpMenuView {
                                    + "\nmaterials to fix your raft and make your"
                                    + "\nway back to civilization.");
                 break;
-            case "H": // How to move ?
+            case "M": // How to move ?
                 System.out.println("\nHow to move ?"
                                    + "\n"                        
                                    + "\nTo move to a different location on the"
@@ -109,7 +109,7 @@ public class HelpMenuView {
             case "F": // How to fix the raft?
                 System.out.println("\nHow to fix the raft?"
                                    + "\n"
-                                   + "\nNThis will be the most important part of the game. "
+                                   + "\nThis will be the most important part of the game. "
                                    + "\nTo be able to win the game you must build a type of raft "
                                    + "\nwith the materials found on the island. You can only work "
                                    + "\non the raft a little at a time when you find certain "

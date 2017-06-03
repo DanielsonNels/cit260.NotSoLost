@@ -20,16 +20,16 @@ public class MainMenuView {
     private String promptMessage = "Please make a main menu selection:";
     
     public MainMenuView(){
-        System.out.println ("\n"
-                          + "\n----------------------------------------------"
-                          + "\n| Main Menu                                  |"
-                          + "\n----------------------------------------------"
-                          + "\nN - Start new game"
-                          + "\nG - Get and start saved game"
-                          + "\nH - Get help on how to play the game"
-                          + "\nS - Save game"
-                          + "\nQ - Quit"
-                          + "\n----------------------------------------------");
+        menu = "\n"
+            + "\n----------------------------------------------"
+            + "\n| Main Menu                                  |"
+            + "\n----------------------------------------------"
+            + "\nN - Start new game"
+            + "\nG - Get and start saved game"
+            + "\nH - Get help on how to play the game"
+            + "\nS - Save game"
+            + "\nQ - Quit"
+            + "\n----------------------------------------------";
     }
 
     public void displayMainMenuView() {
@@ -61,7 +61,7 @@ public class MainMenuView {
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value is entered
-            System.out.println("\n" + this.promptMessage);
+            System.out.println(this.menu + "\n" + this.promptMessage);
             
             value = keyboard.nextLine(); // get next line typed on keyboard
             value = value.trim(); // trim off leading and trailing blanks
