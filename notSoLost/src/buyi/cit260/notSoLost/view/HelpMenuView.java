@@ -97,7 +97,9 @@ public class HelpMenuView {
                                    + "\nNextline");
                 break;
             case "M": // save the current game
-                System.out.println("Should call the main menu");
+                // display the main menu
+                MainMenuView mainMenu = new MainMenuView();
+                mainMenu.displayMainMenuView();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
