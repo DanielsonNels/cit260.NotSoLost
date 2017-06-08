@@ -125,7 +125,7 @@ class HealthMenuView {
 
         ActorControl actorControl = new ActorControl();
         currentEnergy = actorControl.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
-        System.out.println(currentEnergy);
+        System.out.println("\n your new energy is: " + currentEnergy);
 
         return currentEnergy;
     }
