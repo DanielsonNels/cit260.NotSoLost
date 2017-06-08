@@ -78,52 +78,48 @@ public class HelpMenuView {
 
         switch (choice) {
             case "G": // What is the goal of the game?
-                System.out.println("\nWhat is the goal of the game?"
-                        + "\n"
-                        + "\nAfter your ship wrecked on this diserted "
-                        + "\nisland, your goal is to find enough"
-                        + "\nmaterials to fix your raft and make your"
-                        + "\nway back to civilization.");
+                ViewHelper.display("What is the goal of the game?",
+                        "After finding yourself shipwrecked on this deserted island,"
+                    + " your goal is to find enough materials to fix your raft and"
+                    + " make your way back to civilization.");
                 break;
-            case "M": // How to move ?
-                System.out.println("\nHow to move ?"
-                        + "\n"
-                        + "\nTo move to a different location on the"
-                        + "\nisland, use the map game menu option and"
-                        + "\nselect the desired location.  Be aware that"
-                        + "\nmoving from location to location requires"
-                        + "\nthat you have enough enrgy to complete your"
-                        + "\njourney.");
+                
+            case "M": // How to move?
+                ViewHelper.display("How to move?",
+                        "To move to a different location on the island, use the map"
+                    + " game menu option and select the desired location.  Be aware"
+                    + " that moving from location to location requires"
+                    + " moving from location to location requires that you have"
+                    + " enough energy to complete your journey.");
                 break;
             case "T": // How to build tools?
-                System.out.println("\nHow to build tools?"
-                        + "\n"
-                        + "\nExplore the different locations of the"
-                        + "\nisland and collect the required materials"
-                        + "\nto build the following tools:"
-                        + "\n  S - Spear"
-                        + "\n  B - Bow (Health must be above 20%)"
-                        + "\n  R - Rope"
-                        + "\n  T - Trotline (Health must be above 20%)"
-                        + "\n  C - Club / Hammer"
-                        + "\n  S - Snare");
+                ViewHelper.display("How to build tools?", new String[] {
+                        "Explore the different locations of the island and collect"
+                    + " the required materials to build the following tools:",
+                      "  S - Spear", 
+                      "  B - Bow (Health must be above 20%)",
+                      "  R - Rope", 
+                      "  T - Trotline (Health must be above 20%)",
+                      "  C - Club / Hammer", 
+                      "  S - Snare" });
                 break;
+                
             case "F": // How to fix the raft?
-                System.out.println("\nHow to fix the raft?"
-                        + "\n"
-                        + "\nThis will be the most important part of the game. "
-                        + "\nTo be able to win the game you must build a type of raft "
-                        + "\nwith the materials found on the island. You can only work "
-                        + "\non the raft a little at a time when you find certain "
-                        + "\nresources to use. A percentage will be given for the amount "
-                        + "\nof work that has been completed on the raft.");
+                ViewHelper.display("How to fix the raft?",
+                        "This will be the most important part of the game. "
+                    + "To be able to win the game you must build a type of raft"
+                    + " with the materials found on the island. You can only work"
+                    + " on the raft a little at a time when you find certain"
+                    + " resources to use. A percentage will be given for the amount"
+                    + " of work that has been completed on the raft.");
                 break;
+                
             case "I": // How to collect inventory?
-                System.out.println("\nHow to collect inventory?"
-                        + "\n"
-                        + "\nExplore the island and collect inventory items by"
-                        + "\ncollecting as many items as your backpack will carry.");
+                ViewHelper.display("How to collect inventory?",
+                        "Explore the island and collect inventory items by"
+                    + " collecting as many items as your backpack will carry.");
                 break;
+                
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
         }
