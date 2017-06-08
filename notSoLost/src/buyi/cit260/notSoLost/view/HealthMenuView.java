@@ -105,8 +105,8 @@ class HealthMenuView {
             System.out.println("\nPlease enter the amount of hours you would like to rest: ");
             restHours = input.nextDouble();
 
-            if (restHours > 10) { // value is blank
-                System.out.println("\nInvalid value: you cannot rest more than 10 hours");
+            if (restHours > 10 || restHours < 1) { // value is blank
+                System.out.println("\nInvalid value: you cannot rest less than 1 hour or more than 10 hours");
                 continue;
             }
             break; // end the loop
@@ -116,8 +116,8 @@ class HealthMenuView {
             System.out.println("\nPlease enter the time of day in military format e.g. 1300 for 1PM: ");
             timeOfDay = input.nextDouble();
 
-            if (timeOfDay > 2400) { // value is blank
-                System.out.println("\nInvalid value: the day only has 24 hours, please try again");
+            if (timeOfDay > 2400 || timeOfDay < 1) { // value is blank
+                System.out.println("\nInvalid value: time of day cannot be less than 0001 or more than 2400");
                 continue;
             }
             break; // end the loop
