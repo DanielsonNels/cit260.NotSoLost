@@ -28,6 +28,7 @@ public class GameMenuView {
             + "\nW - Work on raft"
             + "\nC - Collect resource"
             + "\nX - Drop resource"
+            + "\nP - Pack Weight Calculator"
             + "\nI - View inventory"
             + "\nR - View raft status"
             + "\nO - Health menu"
@@ -44,7 +45,7 @@ public class GameMenuView {
         boolean done = false; // set flag to not done
         do {
             // prompt for and get actors name
-            String menuOption = this.getMenuOption();
+            String menuOption = ViewHelper.getMenuOption(menu, promptMessage);
             if (menuOption.toUpperCase().equals("R"))  // return to main menu
                 return;
 
@@ -54,28 +55,6 @@ public class GameMenuView {
         } while (!done);
     }
     
-    private String getMenuOption() {
-        
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while an invalid value is entered
-            System.out.println(this.menu + "\n" + this.promptMessage);
-            
-            value = keyboard.nextLine(); // get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;                
-            }
-            
-            break; // end the loop
-        }
-        
-        return value; // return the value entered
-    }
     
     private boolean doAction(String choice) {
         
@@ -102,6 +81,9 @@ public class GameMenuView {
                 break;
             case "X": // What is the goal of the game?
                 this.dropResouceMenuView();
+                break;
+            case "P": // Pack weight calculator
+                this.packWeightCalculatorView();
                 break;
             case "I": // What is the goal of the game?
                 this.viewInventoryMenuView();
@@ -174,6 +156,12 @@ public class GameMenuView {
         // display the drop resource menu
         DropResourceMenuView dropResourceMenu = new DropResourceMenuView();
         dropResourceMenu.displayDropResourceMenuView();
+    }
+
+    private void packWeightCalculatorView() {
+        // display the pack weight calculator
+        PackWeightCalculatorView packWeightCalculator = new PackWeightCalculatorView();
+        packWeightCalculator.displayPackWeightCalculatorView();
     }
 
     private void viewInventoryMenuView() {

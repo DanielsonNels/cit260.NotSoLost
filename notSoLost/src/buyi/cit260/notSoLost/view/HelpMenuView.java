@@ -36,7 +36,7 @@ public class HelpMenuView {
         boolean done = false; // set flag to not done
         do {
             // prompt for and get actors name
-            String menuOption = this.getMenuOption();
+            String menuOption = ViewHelper.getMenuOption(menu, promptMessage);
             if (menuOption.toUpperCase().equals("R")) // return to main menu
             {
                 return;
@@ -49,28 +49,6 @@ public class HelpMenuView {
 
     }
 
-    private String getMenuOption() {
-
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-
-        while (!valid) { // loop while an invalid value is entered
-            System.out.println(this.menu + "\n" + this.promptMessage);
-
-            value = keyboard.nextLine(); // get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-
-            break; // end the loop
-        }
-
-        return value; // return the value entered
-    }
 
     private boolean doAction(String choice) {
 
