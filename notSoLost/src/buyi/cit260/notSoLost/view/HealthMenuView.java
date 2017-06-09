@@ -23,9 +23,9 @@ class HealthMenuView {
                 + "\n----------------------------------------------"
                 + "\n| Health Menu                                  |"
                 + "\n----------------------------------------------"
-                + "\nDE - Display current energy"
-                + "\nRE - Rest to restore energy"
-                + "\nEE - Eat to restore energy"
+                + "\nD - Display current energy"
+                + "\nS - Rest to restore energy"
+                + "\nE - Eat to restore energy"
                 + "\nR - Return to game menu"
                 + "\n----------------------------------------------";
     }
@@ -52,13 +52,13 @@ class HealthMenuView {
         choice = choice.toUpperCase(); // convert choice to upper case
 
         switch (choice) {
-            case "DE": // What is the goal of the game?
+            case "D": // What is the goal of the game?
                 this.currentEnergy();
                 break;
-            case "RE": // What is the goal of the game?
+            case "S": // What is the goal of the game?
                 this.restEnergy();
                 break;
-            case "EE": // What is the goal of the game?
+            case "E": // What is the goal of the game?
                 this.eatEnergy();
                 break;
             default:

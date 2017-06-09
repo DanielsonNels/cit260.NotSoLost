@@ -30,7 +30,7 @@ public class GameMenuView {
             + "\nX - Drop resource"
             + "\nP - Pack Weight Calculator"
             + "\nI - View inventory"
-            + "\nR - View raft status"
+            + "\nQ - View raft status"
             + "\nO - Health menu"
             + "\nE - Explore locations"
             + "\nM - Move to a location"
