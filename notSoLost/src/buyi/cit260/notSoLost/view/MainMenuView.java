@@ -6,21 +6,16 @@
 package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.GameControl;
-import buyi.cit260.notSoLost.view.GameMenuView;
-import java.util.Scanner;
 import notsolost.NotSoLost;
 
 /**
  *
  * @author JSaenz
  */
-public class MainMenuView {
-
-    private String menu;
-    private String promptMessage = "Please make a main menu selection:";
+public class MainMenuView extends View {
 
     public MainMenuView() {
-        menu = "\n"
+            super("\n"
                 + "\n----------------------------------------------"
                 + "\n| Main Menu                                  |"
                 + "\n----------------------------------------------"
@@ -29,37 +24,15 @@ public class MainMenuView {
                 + "\nH - Get help on how to play the game"
                 + "\nS - Save game"
                 + "\nQ - Quit"
-                + "\n----------------------------------------------";
+                + "\n----------------------------------------------");
     }
 
-    public void displayMainMenuView() {
+    @Override
+    public boolean doAction(String value) {
 
-        boolean done = false; // set flag to not done
-        do {
-            // prompt for and get actors name
-            String menuOption = ViewHelper.getMenuOption(menu, promptMessage);
-            if (menuOption.toUpperCase().equals("Q")) {// user wants to quit
-                System.out.println("\n"
-                        + "\n----------------------------------------------"
-                        + "\n| Exiting Game                               |"
-                        + "\n----------------------------------------------"
-                        + "\nThank you for playing!"
-                        + "\n----------------------------------------------");
-                return; // exit the game
-            }
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
+        value = value.toUpperCase(); // convert value to upper case
 
-        } while (!done);
-
-    }
-
-
-    private boolean doAction(String choice) {
-
-        choice = choice.toUpperCase(); // convert choice to upper case
-
-        switch (choice) {
+        switch (value) {
             case "N": // create and start a new game
                 this.startNewGame();
                 break;
@@ -85,7 +58,7 @@ public class MainMenuView {
 
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 
     private void startExistingGame() {
@@ -95,7 +68,7 @@ public class MainMenuView {
     private void displayHelpMenu() {
         // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenuView();
+        helpMenu.display();
     }
 
     private void saveGame() {

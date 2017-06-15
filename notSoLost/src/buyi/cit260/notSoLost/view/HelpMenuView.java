@@ -12,13 +12,11 @@ import buyi.cit260.notSoLost.view.MainMenuView;
  *
  * @author JSaenz
  */
-public class HelpMenuView {
+public class HelpMenuView extends View{
 
-    private String menu;
-    private String promptMessage = "Please make a help menu selection:";
 
     public HelpMenuView() {
-        menu = "\n"
+        super("\n"
                 + "\n----------------------------------------------"
                 + "\n| Help Menu                                  |"
                 + "\n----------------------------------------------"
@@ -27,34 +25,16 @@ public class HelpMenuView {
                 + "\nT - How to build tools?"
                 + "\nF - How to fix the raft?"
                 + "\nI - How to collect inventory?"
-                + "\nR - Return to Main menu"
-                + "\n----------------------------------------------";
+                + "\nQ - Quit to Main menu"
+                + "\n----------------------------------------------");
     }
 
-    public void displayHelpMenuView() {
+    @Override
+    public boolean doAction(String value) {
 
-        boolean done = false; // set flag to not done
-        do {
-            // prompt for and get actors name
-            String menuOption = ViewHelper.getMenuOption(menu, promptMessage);
-            if (menuOption.toUpperCase().equals("R")) // return to main menu
-            {
-                return;
-            }
+        value = value.toUpperCase(); // convert value to upper case
 
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-
-        } while (!done);
-
-    }
-
-
-    private boolean doAction(String choice) {
-
-        choice = choice.toUpperCase(); // convert choice to upper case
-
-        switch (choice) {
+        switch (value) {
             case "G": // What is the goal of the game?
                 ViewHelper.display("What is the goal of the game?",
                         "After finding yourself shipwrecked on this deserted island,"

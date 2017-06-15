@@ -69,6 +69,10 @@ public class ActorControl {
     
     /*********************************************
      *                  EAT
+     * @param currentEnergy
+     * @param energyValue
+     * @param numFood
+     * @return 
      *********************************************/
     public double calcFoodEnergy (double currentEnergy, double energyValue, double numFood){
     

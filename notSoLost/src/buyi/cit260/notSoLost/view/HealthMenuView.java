@@ -12,46 +12,28 @@ import java.util.Scanner;
  *
  * @author JSaenz
  */
-class HealthMenuView {
+class HealthMenuView extends View{
 
     double currentEnergy = 10;
-    private String menu;
-    private String promptMessage = "Please make a health menu selection:";
 
     public HealthMenuView() {
-        menu = "\n"
+        super("\n"
                 + "\n----------------------------------------------"
                 + "\n| Health Menu                                  |"
                 + "\n----------------------------------------------"
                 + "\nD - Display current energy"
                 + "\nS - Rest to restore energy"
                 + "\nE - Eat to restore energy"
-                + "\nR - Return to game menu"
-                + "\n----------------------------------------------";
+                + "\nQ - Quit to game menu"
+                + "\n----------------------------------------------");
     }
 
-    public void displayHealthMenuView() {
-        boolean done = false; // set flag to not done
-        do {
-            // prompt for and get actors name
-            String menuOption = ViewHelper.getMenuOption(menu, promptMessage);
-            if (menuOption.toUpperCase().equals("R")) // return to main menu
-            {
-                return;
-            }
+    @Override
+    public boolean doAction(String value) {
 
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
+        value = value.toUpperCase(); // convert value to upper case
 
-        } while (!done);
-    }
-
-
-    private boolean doAction(String choice) {
-
-        choice = choice.toUpperCase(); // convert choice to upper case
-
-        switch (choice) {
+        switch (value) {
             case "D": // What is the goal of the game?
                 this.currentEnergy();
                 break;

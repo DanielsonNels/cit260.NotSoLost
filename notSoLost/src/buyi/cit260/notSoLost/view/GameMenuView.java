@@ -5,19 +5,14 @@
  */
 package buyi.cit260.notSoLost.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author JSaenz
  */
-public class GameMenuView {
-    
-    private String menu;
-    private String promptMessage = "Please make a game menu selection:";
+public class GameMenuView extends View{
     
     public GameMenuView(){
-        menu = "\n"
+        super("\n"
             + "\n----------------------------------------------"
             + "\n| Game Menu                                  |"
             + "\n----------------------------------------------"
@@ -37,30 +32,16 @@ public class GameMenuView {
             + "\nL - Display current location"
             + "\nS - Save game"
             + "\nH - Help menu"
-            + "\nR - Return to main menu"
-            + "\n----------------------------------------------";
+            + "\nQ - Quit to main menu"
+            + "\n----------------------------------------------");
     }
     
-    public void displayMenu(){
-        boolean done = false; // set flag to not done
-        do {
-            // prompt for and get actors name
-            String menuOption = ViewHelper.getMenuOption(menu, promptMessage);
-            if (menuOption.toUpperCase().equals("R"))  // return to main menu
-                return;
-
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-    }
-    
-    
-    private boolean doAction(String choice) {
+    @Override
+    public boolean doAction(String value) {
         
-        choice = choice.toUpperCase(); // convert choice to upper case
+        value = value.toUpperCase(); // convert value to upper case
         
-        switch (choice) {
+        switch (value) {
             case "J": // What is the goal of the game?
                 this.wreckInventoryMenuView();
                 break;
@@ -137,7 +118,7 @@ public class GameMenuView {
     private void buildToolsMenuView() {
         // display the build tools menu
         BuildToolsMenuView buildToolsMenu = new BuildToolsMenuView();
-        buildToolsMenu.displayBuildToolsMenuView();
+        buildToolsMenu.display();
     }
 
     private void workOnRaftMenuView() {
@@ -179,7 +160,7 @@ public class GameMenuView {
     private void healthMenuView() {
         // display the health menu
         HealthMenuView healthMenu = new HealthMenuView();
-        healthMenu.displayHealthMenuView();
+        healthMenu.display();
     }
 
     private void exploreLocationsMenuView() {
@@ -209,7 +190,7 @@ public class GameMenuView {
     private void displayHelpMenu() {
         // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenuView();
+        helpMenu.display();
     }
     
 }
