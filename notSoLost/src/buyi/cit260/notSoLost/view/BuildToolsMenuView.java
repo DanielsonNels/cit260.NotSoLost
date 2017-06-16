@@ -5,9 +5,6 @@
  */
 package buyi.cit260.notSoLost.view;
 
-import buyi.cit260.notSoLost.control.ActorControl;
-import java.util.Scanner;
-
 /**
  *
  * @author JSaenz

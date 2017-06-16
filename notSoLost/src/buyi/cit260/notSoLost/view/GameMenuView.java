@@ -106,7 +106,7 @@ public class GameMenuView extends View{
     private void islandInventoryMenuView() {
         // display the island inventory menu
         IslandInventoryMenuView islandInventoryMenu = new IslandInventoryMenuView();
-        islandInventoryMenu.displayIslandInventoryMenuView();
+        islandInventoryMenu.display();
     }
 
     private void displayToolsView() {
