@@ -178,7 +178,7 @@ public class GameMenuView extends View{
     private void displayCurrentLocationView() {
         // display current location
         DisplayCurrentLocationView displayCurrentLocation = new DisplayCurrentLocationView();
-        displayCurrentLocation.displayCurrentLocationView();
+        displayCurrentLocation.display();
     }
 
     private void saveGameView() {
