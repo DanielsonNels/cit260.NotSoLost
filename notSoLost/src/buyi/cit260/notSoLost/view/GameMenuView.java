@@ -130,7 +130,7 @@ public class GameMenuView extends View{
     private void collectResourceMenuView() {
         // display the collect resources menu
         CollectResourceMenuView collectResourceMenu = new CollectResourceMenuView();
-        collectResourceMenu.displayCollectResourceMenuView();
+        collectResourceMenu.display();
     }
 
     private void dropResouceMenuView() {
