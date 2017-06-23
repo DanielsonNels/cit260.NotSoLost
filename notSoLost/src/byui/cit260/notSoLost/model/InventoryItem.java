@@ -6,6 +6,7 @@
 package byui.cit260.notSoLost.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -16,8 +17,26 @@ public class InventoryItem implements Serializable{
 
     //Class Instance Variables
     private String inventoryType;
+    private String description;
     private int quantityInStock;
-    private int requiredAmount;
+    private int requiredAmount;    
+    private ResourceScene[] resourceScene;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }   
+    
+    public ResourceScene[] getResourceScene() {
+        return resourceScene;
+    }
+
+    public void setResourceScene(ResourceScene[] resourceScene) {
+        this.resourceScene = resourceScene;
+    }    
     
     // Default Constructor
     public InventoryItem() {
@@ -51,24 +70,23 @@ public class InventoryItem implements Serializable{
     
 
     // Hashcode
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.inventoryType);
-        hash = 71 * hash + this.quantityInStock;
-        hash = 71 * hash + this.requiredAmount;
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.inventoryType);
+        hash = 83 * hash + Objects.hashCode(this.description);
+        hash = 83 * hash + this.quantityInStock;
+        hash = 83 * hash + this.requiredAmount;
+        hash = 83 * hash + Arrays.deepHashCode(this.resourceScene);
         return hash;
     }
 
-    
-// To String
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantityInStock=" + quantityInStock + ", requiredAmount=" + requiredAmount + '}';
+        return "InventoryItem{" + "inventoryType=" + inventoryType + ", description=" + description + ", quantityInStock=" + quantityInStock + ", requiredAmount=" + requiredAmount + ", resourceScene=" + resourceScene + '}';
     }
-    
-    
-    // Equals
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -90,7 +108,15 @@ public class InventoryItem implements Serializable{
         if (!Objects.equals(this.inventoryType, other.inventoryType)) {
             return false;
         }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.resourceScene, other.resourceScene)) {
+            return false;
+        }
         return true;
     }
+
+   
     
 }

@@ -6,6 +6,7 @@
 package byui.cit260.notSoLost.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -13,58 +14,64 @@ import java.util.Objects;
  * @author Chris Newland
  */
 public class Game implements Serializable {
-    
+
     // class instance variables
-    private int score;
-    private int timeOfDay; // 24 Hour Clock
-    private String weather;
+    private Map map;
+    private Player player;
+    private Actor[] actor;    
+    private InventoryItem[] inventoryItem; 
+
+    public InventoryItem[] getInventoryItem() {
+        return inventoryItem;
+    }
+
+    public void setInventoryItem(InventoryItem[] inventoryItem) {
+        this.inventoryItem = inventoryItem;
+    } 
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public Actor[] getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor[] actor) {
+        this.actor = actor;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     public Game() {
-        
-    }
-    
-    public int getScore() {
-        return score;
-    }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public int getTimeOfDay() {
-        return timeOfDay;
-    }
-
-    public void setTimeOfDay(int timeOfDay) {
-        if (timeOfDay >=0 && timeOfDay <=23) {
-            this.timeOfDay = timeOfDay;
-        }
-    }
-
-    public String getWeather() {
-        return weather;
-    }
-
-    public void setWeather(String weather) {
-        this.weather = weather;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.score;
-        hash = 97 * hash + this.timeOfDay;
-        hash = 97 * hash + Objects.hashCode(this.weather);
+        hash = 67 * hash + Objects.hashCode(this.map);
+        hash = 67 * hash + Objects.hashCode(this.player);
+        hash = 67 * hash + Arrays.deepHashCode(this.actor);
+        hash = 67 * hash + Arrays.deepHashCode(this.inventoryItem);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "score=" + score + ", timeOfDay=" + timeOfDay + ", weather=" + weather + '}';
+        return "Game{" + "map=" + map + ", player=" + player + ", actor=" + actor + ", inventoryItem=" + inventoryItem + '}';
     }
 
-    
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -77,20 +84,19 @@ public class Game implements Serializable {
             return false;
         }
         final Game other = (Game) obj;
-        if (this.score != other.score) {
+        if (!Objects.equals(this.map, other.map)) {
             return false;
         }
-        if (this.timeOfDay != other.timeOfDay) {
+        if (!Objects.equals(this.player, other.player)) {
             return false;
         }
-        if (!Objects.equals(this.weather, other.weather)) {
+        if (!Arrays.deepEquals(this.actor, other.actor)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.inventoryItem, other.inventoryItem)) {
             return false;
         }
         return true;
     }
 
-
-    
-    
-    
 }

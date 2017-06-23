@@ -5,7 +5,9 @@
  */
 package byui.cit260.notSoLost.model;
 
+import buyi.cit260.notSoLost.control.GameControl;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -13,13 +15,11 @@ import java.util.Objects;
  * @author Nels
  */
 public class Map implements Serializable{
-    
+
     // Class Instance Variables
-    private String description;
     private int rowCount;
     private int colCount;
-    private int currentRow;
-    private int currentCol;
+    private Location[][] locations;
     
     // Default Constructor
 
@@ -27,14 +27,6 @@ public class Map implements Serializable{
     }
     
     // Getters and Setters
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public int getRowCount() {
         return rowCount;
@@ -52,41 +44,46 @@ public class Map implements Serializable{
         this.colCount = colCount;
     }
 
-    public int getCurrentRow() {
-        return currentRow;
+    public Location[][] getLocations() {
+        return locations;
     }
 
-    public void setCurrentRow(int currentRow) {
-        this.currentRow = currentRow;
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }    
+ 
+    private static Map createMap(){
+        Map map = new Map(5,5);
+        RegularSceneType[] regularSceneType = createRegularSceneType();
+        GameControl.assignRegularSceneTypeToLocations(map, regularSceneType);
+        return map;
     }
-
-    public int getCurrentCol() {
-        return currentCol;
+    
+    private Map(int i, int i0) {
+        System.out.println("*** called Map() in GameControl ***");
     }
-
-    public void setCurrentCol(int currentCol) {
-        this.currentCol = currentCol;
+    
+    private static RegularSceneType[] createRegularSceneType() {
+        System.out.println("*** called createRegularSceneType() in GameControl ***");
+        return null;
     }
     
     // Hashcode
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 61 * hash + Objects.hashCode(this.description);
-        hash = 61 * hash + this.rowCount;
-        hash = 61 * hash + this.colCount;
-        hash = 61 * hash + this.currentRow;
-        hash = 61 * hash + this.currentCol;
+        int hash = 3;
+        hash = 13 * hash + this.rowCount;
+        hash = 13 * hash + this.colCount;
+        hash = 13 * hash + Arrays.deepHashCode(this.locations);
         return hash;
     }
 
     // To String
     @Override
     public String toString() {
-        return "Map{" + "description=" + description + ", rowCount=" + rowCount + ", colCount=" + colCount + ", currentRow=" + currentRow + ", currentCol=" + currentCol + '}';
+        return "Map{" + "rowCount=" + rowCount + ", colCount=" + colCount + ", locations=" + locations + '}';
     }
-    
-    // Equals
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -105,16 +102,12 @@ public class Map implements Serializable{
         if (this.colCount != other.colCount) {
             return false;
         }
-        if (this.currentRow != other.currentRow) {
-            return false;
-        }
-        if (this.currentCol != other.currentCol) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
+        if (!Arrays.deepEquals(this.locations, other.locations)) {
             return false;
         }
         return true;
     }
+
+
     
 }

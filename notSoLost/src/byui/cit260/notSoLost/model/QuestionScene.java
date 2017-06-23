@@ -6,21 +6,32 @@
 package byui.cit260.notSoLost.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
  *
  * @author JSaenz
  */
-public class QuestionScene implements Serializable{
-    
+public class QuestionScene implements Serializable {
+
     // class instance variables
     private String noToAnswer;
     private String bonus;
 
+    private Question[] question;
+
+    public Question[] getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question[] question) {
+        this.question = question;
+    }
+
     public QuestionScene() {
     }
-    
+
     public String getNoToAnswer() {
         return noToAnswer;
     }
@@ -39,10 +50,16 @@ public class QuestionScene implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.noToAnswer);
-        hash = 29 * hash + Objects.hashCode(this.bonus);
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.noToAnswer);
+        hash = 17 * hash + Objects.hashCode(this.bonus);
+        hash = 17 * hash + Arrays.deepHashCode(this.question);
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionScene{" + "noToAnswer=" + noToAnswer + ", bonus=" + bonus + ", question=" + question + '}';
     }
 
     @Override
@@ -63,13 +80,12 @@ public class QuestionScene implements Serializable{
         if (!Objects.equals(this.bonus, other.bonus)) {
             return false;
         }
+        if (!Arrays.deepEquals(this.question, other.question)) {
+            return false;
+        }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "QuestionScene{" + "noToAnswer=" + noToAnswer + ", bonus=" + bonus + '}';
-    }
-    
-    
+
+
 }
