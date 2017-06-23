@@ -17,7 +17,7 @@ public class GameMenuView extends View{
             + "\n| Game Menu                                  |"
             + "\n----------------------------------------------"
             + "\nJ - Wreckage inventory menu"
-            + "\nK - Island inventory menu"
+            + "\nK - Inventory menu"
             + "\nD - Display tools"
             + "\nB - Build tools"
             + "\nW - Work on raft"
@@ -29,7 +29,7 @@ public class GameMenuView extends View{
             + "\nO - Health menu"
             + "\nE - Explore locations"
             + "\nM - Move to a location"
-            + "\nL - Display current location"
+            + "\nL - DisplayMap"
             + "\nS - Save game"
             + "\nH - Help menu"
             + "\nQ - Quit to main menu"
@@ -82,7 +82,7 @@ public class GameMenuView extends View{
                 this.moveToLocationView();
                 break;
             case "L": // What is the goal of the game?
-                this.displayCurrentLocationView();
+                this.displayMapView();
                 break;
             case "S": // What is the goal of the game?
                 this.saveGameView();
@@ -105,7 +105,7 @@ public class GameMenuView extends View{
 
     private void islandInventoryMenuView() {
         // display the island inventory menu
-        IslandInventoryMenuView islandInventoryMenu = new IslandInventoryMenuView();
+        InventoryMenuView islandInventoryMenu = new InventoryMenuView();
         islandInventoryMenu.display();
     }
 
@@ -175,10 +175,10 @@ public class GameMenuView extends View{
         moveToLocation.displayMoveToLocationView();
     }
 
-    private void displayCurrentLocationView() {
+    private void displayMapView() {
         // display current location
-        DisplayCurrentLocationView displayCurrentLocation = new DisplayCurrentLocationView();
-        displayCurrentLocation.display();
+        DisplayMapView displayMap = new DisplayMapView();
+        displayMap.displayMap();
     }
 
     private void saveGameView() {

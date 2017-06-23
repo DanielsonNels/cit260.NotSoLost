@@ -18,8 +18,17 @@ public class Game implements Serializable {
     // class instance variables
     private Map map;
     private Player player;
-    private Actor[] actor;    
-    private InventoryItem[] inventoryItem; 
+    private Actor[] actor;
+    private InventoryItem[] inventoryItem;
+    private Location[][] location;
+
+    public Location[][] getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location[][] location) {
+        this.location = location;
+    }
 
     public InventoryItem[] getInventoryItem() {
         return inventoryItem;
@@ -27,7 +36,7 @@ public class Game implements Serializable {
 
     public void setInventoryItem(InventoryItem[] inventoryItem) {
         this.inventoryItem = inventoryItem;
-    } 
+    }
 
     public Map getMap() {
         return map;
@@ -59,17 +68,18 @@ public class Game implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.map);
-        hash = 67 * hash + Objects.hashCode(this.player);
-        hash = 67 * hash + Arrays.deepHashCode(this.actor);
-        hash = 67 * hash + Arrays.deepHashCode(this.inventoryItem);
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.map);
+        hash = 37 * hash + Objects.hashCode(this.player);
+        hash = 37 * hash + Arrays.deepHashCode(this.actor);
+        hash = 37 * hash + Arrays.deepHashCode(this.inventoryItem);
+        hash = 37 * hash + Arrays.deepHashCode(this.location);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "map=" + map + ", player=" + player + ", actor=" + actor + ", inventoryItem=" + inventoryItem + '}';
+        return "Game{" + "map=" + map + ", player=" + player + ", actor=" + actor + ", inventoryItem=" + inventoryItem + ", location=" + location + '}';
     }
 
     @Override
@@ -94,6 +104,9 @@ public class Game implements Serializable {
             return false;
         }
         if (!Arrays.deepEquals(this.inventoryItem, other.inventoryItem)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.location, other.location)) {
             return false;
         }
         return true;

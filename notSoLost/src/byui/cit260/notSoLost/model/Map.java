@@ -14,20 +14,45 @@ import java.util.Objects;
  *
  * @author Nels
  */
-public class Map implements Serializable{
+public class Map implements Serializable {
 
     // Class Instance Variables
     private int rowCount;
     private int colCount;
     private Location[][] locations;
-    
-    // Default Constructor
 
+    // Default Constructor
     public Map() {
     }
-    
-    // Getters and Setters
 
+    public Map(int rowCount, int colCount) {
+        if (rowCount < 1 || colCount < 1) {
+            System.out.println("The number of rows and columns must be > Zero");
+            return;
+        }
+
+        this.rowCount = rowCount;
+        this.colCount = colCount;
+
+        // create 2-D array for Location objects 
+        this.locations = new Location[rowCount][colCount];
+
+        for (int row = 0; row < rowCount; row++) {
+            for (int col = 0; col < colCount; col++) {
+                // create and initialize new Location object instance
+                Location location = new Location();
+                location.setCol(col);
+                location.setRow(row);
+
+                // assign the Location object to the current position in array
+                locations[row][col] = location;
+            }
+
+        }
+
+    }
+
+    // Getters and Setters
     public int getRowCount() {
         return rowCount;
     }
@@ -50,24 +75,93 @@ public class Map implements Serializable{
 
     public void setLocations(Location[][] locations) {
         this.locations = locations;
-    }    
- 
-    private static Map createMap(){
-        Map map = new Map(5,5);
+    }
+
+    private static Map createMap() {
+        Map map = new Map(5, 5);
         RegularSceneType[] regularSceneType = createRegularSceneType();
         GameControl.assignRegularSceneTypeToLocations(map, regularSceneType);
         return map;
     }
-    
-    private Map(int i, int i0) {
-        System.out.println("*** called Map() in GameControl ***");
-    }
-    
+
     private static RegularSceneType[] createRegularSceneType() {
-        System.out.println("*** called createRegularSceneType() in GameControl ***");
-        return null;
+        RegularSceneType[] regularSceneType = new RegularSceneType[SceneType.values().length];
+        
+        RegularSceneType crashSiteScene = new RegularSceneType();
+        crashSiteScene.setDescription(
+                "Test");
+        crashSiteScene.setSymbol(" CS ");
+        regularSceneType[SceneType.crashSite.ordinal()] = crashSiteScene;
+        
+        RegularSceneType waterFallScene = new RegularSceneType();
+        waterFallScene.setDescription(
+                "Test");
+        waterFallScene.setSymbol(" WF ");
+        regularSceneType[SceneType.waterFall.ordinal()] = waterFallScene;
+        
+        RegularSceneType beachScene = new RegularSceneType();
+        beachScene.setDescription(
+                "Test");
+        beachScene.setSymbol(" B ");
+        regularSceneType[SceneType.beach.ordinal()] = beachScene;
+        
+        RegularSceneType forestScene = new RegularSceneType();
+        forestScene.setDescription(
+                "Test");
+        forestScene.setSymbol(" F ");
+        regularSceneType[SceneType.forest.ordinal()] = forestScene;
+        
+        RegularSceneType caveScene = new RegularSceneType();
+        caveScene.setDescription(
+                "Test");
+        caveScene.setSymbol(" C ");
+        regularSceneType[SceneType.cave.ordinal()] = caveScene;
+        
+        RegularSceneType darkForestScene = new RegularSceneType();
+        darkForestScene.setDescription(
+                "Test");
+        darkForestScene.setSymbol(" DF ");
+        regularSceneType[SceneType.darkForest.ordinal()] = darkForestScene;
+        
+        RegularSceneType volcanoScene = new RegularSceneType();
+        volcanoScene.setDescription(
+                "Test");
+        volcanoScene.setSymbol(" V ");
+        regularSceneType[SceneType.volcano.ordinal()] = volcanoScene;
+        
+        RegularSceneType mountainScene = new RegularSceneType();
+        mountainScene.setDescription(
+                "Test");
+        mountainScene.setSymbol(" M ");
+        regularSceneType[SceneType.mountain.ordinal()] = mountainScene;
+        
+        RegularSceneType raftSiteScene = new RegularSceneType();
+        raftSiteScene.setDescription(
+                "Test");
+        raftSiteScene.setSymbol(" RS ");
+        regularSceneType[SceneType.raftSite.ordinal()] = raftSiteScene;
+        
+        RegularSceneType cliffScene = new RegularSceneType();
+        cliffScene.setDescription(
+                "Test");
+        cliffScene.setSymbol(" CF ");
+        regularSceneType[SceneType.cliff.ordinal()] = cliffScene;
+        
+        RegularSceneType campSiteScene = new RegularSceneType();
+        campSiteScene.setDescription(
+                "Test");
+        campSiteScene.setSymbol(" CP ");
+        regularSceneType[SceneType.campSite.ordinal()] = campSiteScene;        
+   
+        RegularSceneType pondScene = new RegularSceneType();
+        pondScene.setDescription(
+                "Test");
+        pondScene.setSymbol(" P ");
+        regularSceneType[SceneType.pond.ordinal()] = pondScene;
+        
+        return regularSceneType;
     }
-    
+
     // Hashcode
     @Override
     public int hashCode() {
@@ -108,6 +202,4 @@ public class Map implements Serializable{
         return true;
     }
 
-
-    
 }

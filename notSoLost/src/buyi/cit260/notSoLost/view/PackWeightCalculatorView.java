@@ -5,7 +5,7 @@
  */
 package buyi.cit260.notSoLost.view;
 
-import buyi.cit260.notSoLost.control.ActorControl;
+import buyi.cit260.notSoLost.control.PlayerControl;
 import java.util.Scanner;
 
 /**
@@ -70,7 +70,7 @@ class PackWeightCalculatorView {
 
 
     private void doAction(int quantity, double weight) {
-        ActorControl actorControl = new ActorControl();
+        PlayerControl actorControl = new PlayerControl();
         currentPackWeight = actorControl.calcPackWeight(currentPackWeight, weight, quantity);
         if (currentPackWeight < 0) {
             System.out.println("\n Dude! You can't carry that much!");

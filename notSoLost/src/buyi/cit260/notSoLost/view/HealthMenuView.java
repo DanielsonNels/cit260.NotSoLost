@@ -5,7 +5,7 @@
  */
 package buyi.cit260.notSoLost.view;
 
-import buyi.cit260.notSoLost.control.ActorControl;
+import buyi.cit260.notSoLost.control.PlayerControl;
 import java.util.Scanner;
 
 /**
@@ -83,7 +83,7 @@ class HealthMenuView extends View{
             break; // end the loop
         }
 
-        ActorControl actorControl = new ActorControl();
+        PlayerControl actorControl = new PlayerControl();
         currentEnergy = actorControl.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
         System.out.println("\n your new energy is: " + currentEnergy);
 
