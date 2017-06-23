@@ -8,9 +8,11 @@ package buyi.cit260.notSoLost.control;
 import byui.cit260.notSoLost.model.Actor;
 import byui.cit260.notSoLost.model.Game;
 import byui.cit260.notSoLost.model.InventoryItem;
+import byui.cit260.notSoLost.model.Location;
 import byui.cit260.notSoLost.model.Map;
 import byui.cit260.notSoLost.model.Player;
 import byui.cit260.notSoLost.model.RegularSceneType;
+import byui.cit260.notSoLost.model.SceneType;
 import notsolost.NotSoLost;
 
 /**
@@ -137,7 +139,35 @@ public class GameControl {
     }
 
     public static void assignRegularSceneTypeToLocations(Map map, RegularSceneType[] regularSceneType) {
-        System.out.println("*** called assignRegularSceneTypeToLocations() in GameControl ***");
+        Location[][] locations = map.getLocations();
+        
+        // start point
+        locations[0][0].setRegularSceneType(regularSceneType[SceneType.beach.ordinal()]);
+        locations[1][0].setRegularSceneType(regularSceneType[SceneType.beach.ordinal()]);
+        locations[2][0].setRegularSceneType(regularSceneType[SceneType.beach.ordinal()]);
+        locations[3][0].setRegularSceneType(regularSceneType[SceneType.beach.ordinal()]);
+        locations[4][0].setRegularSceneType(regularSceneType[SceneType.beach.ordinal()]);
+        locations[0][1].setRegularSceneType(regularSceneType[SceneType.crashSite.ordinal()]);
+        locations[1][1].setRegularSceneType(regularSceneType[SceneType.waterFall.ordinal()]);
+        locations[2][1].setRegularSceneType(regularSceneType[SceneType.volcano.ordinal()]);
+        locations[3][1].setRegularSceneType(regularSceneType[SceneType.mountain.ordinal()]);
+        locations[4][1].setRegularSceneType(regularSceneType[SceneType.cliff.ordinal()]);
+        locations[0][2].setRegularSceneType(regularSceneType[SceneType.campSite.ordinal()]);
+        locations[1][2].setRegularSceneType(regularSceneType[SceneType.forest.ordinal()]);
+        locations[2][2].setRegularSceneType(regularSceneType[SceneType.darkForest.ordinal()]);
+        locations[3][2].setRegularSceneType(regularSceneType[SceneType.pond.ordinal()]);
+        locations[4][2].setRegularSceneType(regularSceneType[SceneType.cliff.ordinal()]);
+        locations[0][3].setRegularSceneType(regularSceneType[SceneType.raftSite.ordinal()]);
+        locations[1][3].setRegularSceneType(regularSceneType[SceneType.forest.ordinal()]);
+        locations[2][3].setRegularSceneType(regularSceneType[SceneType.forest.ordinal()]);
+        locations[3][3].setRegularSceneType(regularSceneType[SceneType.mountain.ordinal()]);
+        locations[4][3].setRegularSceneType(regularSceneType[SceneType.waterFall.ordinal()]);
+        locations[0][4].setRegularSceneType(regularSceneType[SceneType.beach.ordinal()]);
+        locations[1][4].setRegularSceneType(regularSceneType[SceneType.beach.ordinal()]);
+        locations[2][4].setRegularSceneType(regularSceneType[SceneType.cave.ordinal()]);
+        locations[3][4].setRegularSceneType(regularSceneType[SceneType.cliff.ordinal()]);
+        locations[4][4].setRegularSceneType(regularSceneType[SceneType.cliff.ordinal()]);
+        
     }
     
     public enum Item {
