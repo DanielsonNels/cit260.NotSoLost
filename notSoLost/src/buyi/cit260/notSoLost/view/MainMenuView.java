@@ -54,7 +54,7 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
         // create a new game
-        GameControl.createNewGame(NotSoLost.getActor());
+        GameControl.createNewGame(NotSoLost.getPlayer());
 
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();

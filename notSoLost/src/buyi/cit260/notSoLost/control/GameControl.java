@@ -5,7 +5,7 @@
  */
 package buyi.cit260.notSoLost.control;
 
-import byui.cit260.notSoLost.model.Actor;
+import byui.cit260.notSoLost.model.Player;
 import notsolost.NotSoLost;
 
 /**
@@ -14,21 +14,21 @@ import notsolost.NotSoLost;
  */
 public class GameControl {
     
-    public static void createNewGame(Actor actor) {
+    public static void createNewGame(Player player) {
         System.out.println("\n*** createNewGame stub function called ***");
     }
 
-    public static Actor createActor(String name) {
+    public static Player createPlayer(String name) {
         if (name == null) {
             return null;
         }
         
-        Actor actor = new Actor();
-        actor.setName(name);
+        Player player = new Player();
+        player.setName(name);
         
-        NotSoLost.setActor(actor); // save the actor
+        NotSoLost.setPlayer(player); // save the player
         
-        return actor;
+        return player;
     }
     
 }
