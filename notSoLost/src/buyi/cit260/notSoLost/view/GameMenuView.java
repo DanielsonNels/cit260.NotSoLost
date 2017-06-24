@@ -25,7 +25,8 @@ public class GameMenuView extends View{
             + "\nX - Drop resource"
             + "\nP - Pack Weight Calculator"
             + "\nI - View inventory"
-            + "\nQ - View raft status"
+            + "\nV - View inventory item weights"
+            + "\nR - View raft status"
             + "\nO - Health menu"
             + "\nE - Explore locations"
             + "\nM - Move to a location"
@@ -68,6 +69,9 @@ public class GameMenuView extends View{
                 break;
             case "I": // What is the goal of the game?
                 this.viewInventoryMenuView();
+                break;
+            case "V": // What is the goal of the game?
+                this.viewItemWeightView();
                 break;
             case "R": // What is the goal of the game?
                 this.viewRaftStatusView();
@@ -149,6 +153,12 @@ public class GameMenuView extends View{
         // display the view inventory menu
         ViewInventoryMenuView viewInventoryMenu = new ViewInventoryMenuView();
         viewInventoryMenu.displayViewInventoryMenuView();
+    }
+    
+    private void viewItemWeightView() {
+        // display the view inventory menu
+        ViewItemWeightView viewItemWeight = new ViewItemWeightView();
+        viewItemWeight.displayViewItemWeightView();
     }
 
     private void viewRaftStatusView() {
