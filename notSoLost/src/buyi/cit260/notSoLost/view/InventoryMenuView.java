@@ -22,6 +22,7 @@ public class InventoryMenuView extends View{
             + "\nT - Tools                                     "
             + "\nC - Construction Supplies                     "
             + "\nA - Check Total Amount of Items               "
+            + "\nW - Item Weight Stats                         "    
             + "\nQ - Quit to main menu                         "
             + "\n----------------------------------------------");
     }
@@ -43,6 +44,9 @@ public class InventoryMenuView extends View{
                 break;  
             case "A": // run total item check
                 this.calcTotalItems();
+                break;
+            case "W": // item weight
+                this.calcItemWeight();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -72,6 +76,11 @@ public class InventoryMenuView extends View{
         InventoryControl inventoryControl = new InventoryControl.calcTotalItems();
         double total = inventoryControl.calcTotalItems();
         System.out.println("\nTotal Items in Inventory: " + total);
+    }
+
+    private void calcItemWeight() {
+        InventoryControl inventoryControl = new InventoryControl.calcItemWeight();
+        inventoryControl.calcItemWeight();
     }
     
 }
