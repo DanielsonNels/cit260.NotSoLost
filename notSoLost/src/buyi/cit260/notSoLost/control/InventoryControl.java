@@ -11,4 +11,21 @@ package buyi.cit260.notSoLost.control;
  */
 public class InventoryControl {
     
+    public double calcTotalItems() {
+        int[] amounts = {12, 4, 6, 10, 9, 8, 7, 6, 3, 2};
+    
+        int total = 0;
+        
+        for (int i = 0; i < amounts.length; i++) {
+            total += amounts[i];
+        }
+        
+        return total;
+    }
+
+    public static class calcTotalItems extends InventoryControl {
+
+        public calcTotalItems() {
+        }
+    }
 }

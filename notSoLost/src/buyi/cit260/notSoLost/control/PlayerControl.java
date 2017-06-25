@@ -38,6 +38,7 @@ public class PlayerControl {
         return newEnergyLevel;
     }
     
+    
     public double calcEnergyRestGain (double currentEnergy, double restHours, double timeOfDay){
         
 	if (currentEnergy <= 0) {
@@ -66,14 +67,7 @@ public class PlayerControl {
         return newEnergyLevel;
     }
 
-    
-    /*********************************************
-     *                  EAT
-     * @param currentEnergy
-     * @param energyValue
-     * @param numFood
-     * @return 
-     *********************************************/
+    // Determine energy benefit of eating an amount of a type of food.
     public double calcFoodEnergy (double currentEnergy, double energyValue, double numFood){
     
         
@@ -101,7 +95,8 @@ public class PlayerControl {
         
     }
     
-       public double calcPackWeight(double currentWeight,
+    
+    public double calcPackWeight(double currentWeight,
             double inventoryItemWeight, int inventoryItemQuantity) {
 
         if (currentWeight < 0) {
@@ -124,5 +119,5 @@ public class PlayerControl {
         }
 
         return newPackWeight;
-    }
+    }       
 }

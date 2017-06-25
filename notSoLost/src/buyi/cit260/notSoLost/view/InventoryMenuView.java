@@ -5,6 +5,8 @@
  */
 package buyi.cit260.notSoLost.view;
 
+import buyi.cit260.notSoLost.control.InventoryControl;
+
 /**
  *
  * @author JSaenz
@@ -19,6 +21,7 @@ public class InventoryMenuView extends View{
             + "\nF - Food Items                                "
             + "\nT - Tools                                     "
             + "\nC - Construction Supplies                     "
+            + "\nA - Check Total Amount of Items               "
             + "\nQ - Quit to main menu                         "
             + "\n----------------------------------------------");
     }
@@ -37,7 +40,10 @@ public class InventoryMenuView extends View{
                 break;
             case "C": // constuction supplies list
                 this.constructionInventoryMenuView();
-                break;    
+                break;  
+            case "A": // run total item check
+                this.calcTotalItems();
+                break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
         }
@@ -60,6 +66,12 @@ public class InventoryMenuView extends View{
     private void constructionInventoryMenuView() {
         ConstructionInventoryMenuView constructionInventoryMenu = new ConstructionInventoryMenuView();
         constructionInventoryMenu.displayConstructionInventoryMenuView();
+    }
+
+    private void calcTotalItems() {
+        InventoryControl inventoryControl = new InventoryControl.calcTotalItems();
+        double total = inventoryControl.calcTotalItems();
+        System.out.println("\nTotal Items in Inventory: " + total);
     }
     
 }

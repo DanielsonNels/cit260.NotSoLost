@@ -17,9 +17,9 @@ import java.util.Objects;
 public class Map implements Serializable {
 
     // Class Instance Variables
-    private int rowCount;
-    private int colCount;
-    private Location[][] locations;
+    public int rowCount;
+    public int colCount;
+    public Location[][] locations;
 
     // Default Constructor
     public Map() {

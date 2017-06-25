@@ -83,8 +83,8 @@ class HealthMenuView extends View{
             break; // end the loop
         }
 
-        PlayerControl actorControl = new PlayerControl();
-        currentEnergy = actorControl.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
+        PlayerControl playerControl = new PlayerControl();
+        currentEnergy = playerControl.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
         System.out.println("\n your new energy is: " + currentEnergy);
 
         return currentEnergy;
