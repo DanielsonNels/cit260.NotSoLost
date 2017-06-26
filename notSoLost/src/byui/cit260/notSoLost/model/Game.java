@@ -17,6 +17,7 @@ public class Game implements Serializable {
 
     // class instance variables
     private Map map;
+    private Raft raft;
     private Player player;
     private Actor[] actor;
     private InventoryItem[] inventoryItem;
@@ -43,7 +44,15 @@ public class Game implements Serializable {
     }
 
     public void setMap(Map map) {
-        this.map = map;
+        this.map = map;    
+    }
+    
+    public Raft getRaft() {
+        return raft;
+    }
+
+    public void setRaft(Raft raft) {
+        this.raft = raft;
     }
 
     public Actor[] getActor() {

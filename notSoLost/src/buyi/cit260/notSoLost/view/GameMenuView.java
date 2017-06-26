@@ -128,7 +128,7 @@ public class GameMenuView extends View{
     private void workOnRaftMenuView() {
         // display the work on raft menu
         WorkOnRaftMenuView workOnRaftMenu = new WorkOnRaftMenuView();
-        workOnRaftMenu.displayWorkOnRaftMenuView();
+        workOnRaftMenu.display();
     }
 
     private void collectResourceMenuView() {

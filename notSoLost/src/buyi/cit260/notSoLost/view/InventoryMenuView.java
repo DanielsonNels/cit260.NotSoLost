@@ -20,7 +20,6 @@ public class InventoryMenuView extends View{
             + "\n----------------------------------------------"
             + "\nF - Food Items                                "
             + "\nT - Tools                                     "
-            + "\nC - Construction Supplies                     "
             + "\nA - Check Total Amount of Items               "
             + "\nQ - Quit to main menu                         "
             + "\n----------------------------------------------");
@@ -38,9 +37,6 @@ public class InventoryMenuView extends View{
             case "T": // tool list
                 this.toolsInventoryMenuView();
                 break;
-            case "C": // constuction supplies list
-                this.constructionInventoryMenuView();
-                break;  
             case "A": // run total item check
                 this.calcTotalItems();
                 break;
@@ -61,11 +57,6 @@ public class InventoryMenuView extends View{
     private void toolsInventoryMenuView() {
         ToolsInventoryMenuView toolsInventoryMenu = new ToolsInventoryMenuView();
         toolsInventoryMenu.displayToolsInventoryMenuView();
-    }
-
-    private void constructionInventoryMenuView() {
-        ConstructionInventoryMenuView constructionInventoryMenu = new ConstructionInventoryMenuView();
-        constructionInventoryMenu.displayConstructionInventoryMenuView();
     }
 
     private void calcTotalItems() {
