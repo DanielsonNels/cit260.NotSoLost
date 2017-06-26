@@ -16,14 +16,14 @@ import java.util.stream.IntStream;
 public class InventoryControl {
 
     public double calcTotalItems() {
-        int[] amounts = {12, 4, 6, 10, 9, 8, 7, 6, 3, 2};
-
+        int[] amounts = {6, 5, 1, 8, 0, 12, 4, 1, 4, 2};
+    
         int total = 0;
-
-        for (int i = 0; i < amounts.length; i++) {
-            total += amounts[i];
+        
+        for (int amount : amounts) {
+            total += amount;
         }
-
+        
         return total;
     }
 
