@@ -5,14 +5,49 @@
  */
 package buyi.cit260.notSoLost.view;
 
+import buyi.cit260.notSoLost.control.RaftControl;
+
 /**
  *
  * @author JSaenz
  */
-class WorkOnRaftMenuView {
+public class WorkOnRaftMenuView extends View {
 
-    public void displayWorkOnRaftMenuView() {
-        System.out.println("\n*** displayWorkOnRaftMenuView() function called ***");
+    public WorkOnRaftMenuView(){
+        super("\n"
+            + "\n----------------------------------------------"
+            + "\n| - Raft Inventory                            |"
+            + "\n----------------------------------------------"
+            + "\nV - View Raft Items                           "
+            + "\nQ - Quit to main menu                         "
+            + "\n----------------------------------------------");
+    }
+    
+    @Override
+    public boolean doAction(String value) {
+        
+        value = value.toUpperCase(); // convert value to upper case
+        
+        switch (value) {
+            case "V": // food item list
+                this.calcTotalRaftItems();
+                break;
+            default:
+                System.out.println("\n*** Invalid selection *** Try again");
+        }
+        
+        return false;
+    }
+
+    private void calcTotalRaftItems() {
+        RaftControl raftControl = new RaftControl.calcTotalRaftItems();
+        double total = raftControl.calcTotalRaftItems();
+        System.out.println("\nQuantity of items Raft Inventory: " + total);
+
+    }
+
+    void workOnRaftMenuView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
