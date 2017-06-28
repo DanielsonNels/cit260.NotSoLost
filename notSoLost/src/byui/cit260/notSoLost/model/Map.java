@@ -77,7 +77,7 @@ public class Map implements Serializable {
         this.locations = locations;
     }
 
-    private static Map createMap() {
+    public static Map createMap() {
         Map map = new Map(5, 5);
         RegularSceneType[] regularSceneType = createRegularSceneType();
         GameControl.assignRegularSceneTypeToLocations(map, regularSceneType);
@@ -162,6 +162,21 @@ public class Map implements Serializable {
         return regularSceneType;
     }
 
+    public enum SceneType{
+        crashSite,
+        waterFall,
+        beach,
+        forest,
+        cave,
+        darkForest,
+        volcano,
+        mountain,
+        raftSite,
+        cliff,
+        campSite,
+        pond;
+    }
+    
     // Hashcode
     @Override
     public int hashCode() {
