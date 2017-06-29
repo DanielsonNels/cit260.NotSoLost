@@ -82,7 +82,9 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        return "Location{" + "row=" + row + ", col=" + col + ", visited=" + visited + ", regularSceneType=" + regularSceneType + ", actors=" + actors + '}';
+        return "Location{" + "row=" + row + ", col=" + col + ","
+                + " visited=" + visited + ", regularSceneType=" + regularSceneType + ","
+                + " actors=" + actors + '}';
     }
 
     @Override
@@ -113,6 +115,10 @@ public class Location implements Serializable {
             return false;
         }
         return true;
+    }
+    //To change body of generated methods, choose Tools | Templates.
+    public boolean getSymbol() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
