@@ -22,7 +22,7 @@ public class DisplayMapView {
         StringBuilder line;
 
         Game game = NotSoLost.getCurrentGame();
-        Location[][] location = game.getLocation();
+        Location[][] locations = game.getMap().getLocations();
 
         System.out.println("\n        ISLAND MAP");
         line = new StringBuilder("                                     ");
@@ -34,13 +34,14 @@ public class DisplayMapView {
         System.out.println(line.toString());
 
         // for each map item
-        for (Location[] row : location) {
+        int rowIndex = 0;
+        for (Location[] row : locations) {
             System.out.println("------------------------------------------");
-            System.out.println("\n N");
+            rowIndex++;
+            System.out.print(rowIndex + " ");
                 for (Location col : row) {
-                    System.out.println("|");
-                    location = locations[row][col];
-                    System.out.println(RegularSceneType.getSymbol());
+                    System.out.print("|");
+                    System.out.print(col.getRegularSceneType().getSymbol());
                 }
                 System.out.println("|");        
             // DISPLAY the line      

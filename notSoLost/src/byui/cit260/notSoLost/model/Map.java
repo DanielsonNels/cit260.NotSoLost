@@ -77,90 +77,9 @@ public class Map implements Serializable {
         this.locations = locations;
     }
 
-    public static Map createMap() {
-        Map map = new Map(5, 5);
-        RegularSceneType[] regularSceneType = createRegularSceneType();
-        GameControl.assignRegularSceneTypeToLocations(map, regularSceneType);
-        return map;
-    }
+    
 
-    private static RegularSceneType[] createRegularSceneType() {
-        RegularSceneType[] regularSceneType = new RegularSceneType[SceneType.values().length];
-        
-        RegularSceneType crashSiteScene = new RegularSceneType();
-        crashSiteScene.setDescription(
-                "Test");
-        crashSiteScene.setSymbol(" CS ");
-        regularSceneType[SceneType.crashSite.ordinal()] = crashSiteScene;
-        
-        RegularSceneType waterFallScene = new RegularSceneType();
-        waterFallScene.setDescription(
-                "Test");
-        waterFallScene.setSymbol(" WF ");
-        regularSceneType[SceneType.waterFall.ordinal()] = waterFallScene;
-        
-        RegularSceneType beachScene = new RegularSceneType();
-        beachScene.setDescription(
-                "Test");
-        beachScene.setSymbol(" B ");
-        regularSceneType[SceneType.beach.ordinal()] = beachScene;
-        
-        RegularSceneType forestScene = new RegularSceneType();
-        forestScene.setDescription(
-                "Test");
-        forestScene.setSymbol(" F ");
-        regularSceneType[SceneType.forest.ordinal()] = forestScene;
-        
-        RegularSceneType caveScene = new RegularSceneType();
-        caveScene.setDescription(
-                "Test");
-        caveScene.setSymbol(" C ");
-        regularSceneType[SceneType.cave.ordinal()] = caveScene;
-        
-        RegularSceneType darkForestScene = new RegularSceneType();
-        darkForestScene.setDescription(
-                "Test");
-        darkForestScene.setSymbol(" DF ");
-        regularSceneType[SceneType.darkForest.ordinal()] = darkForestScene;
-        
-        RegularSceneType volcanoScene = new RegularSceneType();
-        volcanoScene.setDescription(
-                "Test");
-        volcanoScene.setSymbol(" V ");
-        regularSceneType[SceneType.volcano.ordinal()] = volcanoScene;
-        
-        RegularSceneType mountainScene = new RegularSceneType();
-        mountainScene.setDescription(
-                "Test");
-        mountainScene.setSymbol(" M ");
-        regularSceneType[SceneType.mountain.ordinal()] = mountainScene;
-        
-        RegularSceneType raftSiteScene = new RegularSceneType();
-        raftSiteScene.setDescription(
-                "Test");
-        raftSiteScene.setSymbol(" RS ");
-        regularSceneType[SceneType.raftSite.ordinal()] = raftSiteScene;
-        
-        RegularSceneType cliffScene = new RegularSceneType();
-        cliffScene.setDescription(
-                "Test");
-        cliffScene.setSymbol(" CF ");
-        regularSceneType[SceneType.cliff.ordinal()] = cliffScene;
-        
-        RegularSceneType campSiteScene = new RegularSceneType();
-        campSiteScene.setDescription(
-                "Test");
-        campSiteScene.setSymbol(" CP ");
-        regularSceneType[SceneType.campSite.ordinal()] = campSiteScene;        
-   
-        RegularSceneType pondScene = new RegularSceneType();
-        pondScene.setDescription(
-                "Test");
-        pondScene.setSymbol(" P ");
-        regularSceneType[SceneType.pond.ordinal()] = pondScene;
-        
-        return regularSceneType;
-    }
+    
 
     public enum SceneType{
         crashSite,

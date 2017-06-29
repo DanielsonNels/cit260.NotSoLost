@@ -27,7 +27,7 @@ public class GameControl {
         
         game.setPlayer(player);
         
-        Map map = new Map();
+        Map map = MapControl.createMAP();
         game.setMap(map);
         
         InventoryItem[] inventoryItem = GameControl.createinventoryItem();
@@ -48,11 +48,7 @@ public class GameControl {
         return player;
     }
     
-    private static Map createMap() {
-        Map map = null;        
-        System.out.println("*** called createMap() in GameControl ***");        
-        return map;
-    }
+    
 
     private static Actor[] createActor() {
         System.out.println("*** called createActor() in GameControl ***");

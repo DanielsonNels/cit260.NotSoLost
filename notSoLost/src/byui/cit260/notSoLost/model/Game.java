@@ -21,15 +21,9 @@ public class Game implements Serializable {
     private Player player;
     private Actor[] actor;
     private InventoryItem[] inventoryItem;
-    private Location[][] location;
+    
 
-    public Location[][] getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location[][] location) {
-        this.location = location;
-    }
+   
 
     public InventoryItem[] getInventoryItem() {
         return inventoryItem;
@@ -82,13 +76,13 @@ public class Game implements Serializable {
         hash = 37 * hash + Objects.hashCode(this.player);
         hash = 37 * hash + Arrays.deepHashCode(this.actor);
         hash = 37 * hash + Arrays.deepHashCode(this.inventoryItem);
-        hash = 37 * hash + Arrays.deepHashCode(this.location);
+        
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "map=" + map + ", player=" + player + ", actor=" + actor + ", inventoryItem=" + inventoryItem + ", location=" + location + '}';
+        return "Game{" + "map=" + map + ", player=" + player + ", actor=" + actor + ", inventoryItem=" + inventoryItem + '}';
     }
 
     @Override
@@ -115,9 +109,7 @@ public class Game implements Serializable {
         if (!Arrays.deepEquals(this.inventoryItem, other.inventoryItem)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.location, other.location)) {
-            return false;
-        }
+        
         return true;
     }
 
