@@ -37,9 +37,11 @@ public class InventoryControl {
         int[] weights = {10, 12, 5, 2, 9, 6, 7, 1, 8, 4, 3, 13};
         System.out.println(Arrays.toString(weights));
 
+       
+        
         int min, max;
         min = max = weights[0];
-        for (int i = 1; i < weights.length; i++) {
+        for (int i = 0; i < weights.length; i++) {
             if (weights[i] < min) {
                 min = weights[i];
             }

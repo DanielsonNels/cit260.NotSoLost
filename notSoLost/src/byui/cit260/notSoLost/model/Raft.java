@@ -15,32 +15,49 @@ import java.util.Objects;
 
 public class Raft implements Serializable{
 
+    private final static int MAX_ROPE = 40;
+    private final static int MAX_PONTOON = 2;
+    // etc.
+    
+   
+    
     // class instance variables
-    private boolean hasRope;  
+    
+    private int ropeAmount;
+    
     private boolean hasPontoons;  
+    private int pontoonAmount;
+    
     private boolean hasFloor;  
+    
     private boolean hasMast;  
+    
     private boolean hasSail;  
+    
     private boolean hasRudder;  
 
     public Raft() {
-        this.hasRope = false;
-        this.hasPontoons = false;
-        this.hasFloor = false;
-        this.hasMast = false;
-        this.hasSail = false;
-        this.hasRudder = false;
+        
     }
     
     
+    public int getRopeAmount(){
+        return ropeAmount;
+    }
+    
+    public void setRopeAmount(int amount){
+        ropeAmount = amount;
+    }
 
     public boolean hasRope() {
-        return hasRope;
+        return ropeAmount > 0;
+    }
+    
+    public boolean hasEnoughRope(){
+        return ropeAmount >= MAX_ROPE;
     }
 
-    public void setHasRope(boolean hasRope) {
-        this.hasRope = hasRope;
-    }
+   
 
     public boolean hasPontoons() {
         return hasPontoons;
@@ -81,11 +98,12 @@ public class Raft implements Serializable{
     public void setHasRudder(boolean hasRudder) {
         this.hasRudder = hasRudder;
     }
-
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + (this.hasRope ? 1 : 0);
+        //hash = 23 * hash + (this.hasRope ? 1 : 0);
         hash = 23 * hash + (this.hasPontoons ? 1 : 0);
         hash = 23 * hash + (this.hasFloor ? 1 : 0);
         hash = 23 * hash + (this.hasMast ? 1 : 0);
@@ -96,7 +114,7 @@ public class Raft implements Serializable{
 
     @Override
     public String toString() {
-        return "Raft{" + "hasRope=" + hasRope + ", hasPontoons=" + hasPontoons + ", hasFloor=" + hasFloor + ", hasMast=" + hasMast + ", hasSail=" + hasSail + ", hasRudder=" + hasRudder + '}';
+        return "Raft{" +  ", hasPontoons=" + hasPontoons + ", hasFloor=" + hasFloor + ", hasMast=" + hasMast + ", hasSail=" + hasSail + ", hasRudder=" + hasRudder + '}';
     }
 
     
@@ -112,9 +130,7 @@ public class Raft implements Serializable{
             return false;
         }
         final Raft other = (Raft) obj;
-        if (this.hasRope != other.hasRope) {
-            return false;
-        }
+        
         if (this.hasPontoons != other.hasPontoons) {
             return false;
         }
@@ -134,8 +150,10 @@ public class Raft implements Serializable{
     }
     
     public boolean isSeaworthy() {
-        return this.hasRope && this.hasPontoons && this.hasFloor 
-                && this.hasMast && this.hasSail && this.hasRudder;
+        return hasEnoughRope() // && hasEnoughPontoons() && ..
+                ;
+        //return this.hasRope && this.hasPontoons && this.hasFloor 
+        //        && this.hasMast && this.hasSail && this.hasRudder;
     }
     
     
