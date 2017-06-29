@@ -8,8 +8,6 @@ package buyi.cit260.notSoLost.view;
 
 import byui.cit260.notSoLost.model.Game;
 import byui.cit260.notSoLost.model.Location;
-import byui.cit260.notSoLost.model.Map;
-import byui.cit260.notSoLost.model.RegularSceneType;
 import notsolost.NotSoLost;
 
 /**
@@ -24,19 +22,19 @@ public class DisplayMapView {
         Game game = NotSoLost.getCurrentGame();
         Location[][] locations = game.getMap().getLocations();
 
-        System.out.println("\n        ISLAND MAP");
+        System.out.println("\n          ISLAND MAP");
         line = new StringBuilder("                                     ");
-        line.insert(0, "1");
-        line.insert(10, "2");
-        line.insert(20, "3");
-        line.insert(30, "4");
-        line.insert(40, "5");
+        line.insert(4, "1");
+        line.insert(9, "2");
+        line.insert(14, "3");
+        line.insert(19, "4");
+        line.insert(24, "5");
         System.out.println(line.toString());
 
         // for each map item
         int rowIndex = 0;
         for (Location[] row : locations) {
-            System.out.println("------------------------------------------");
+            System.out.println("----------------------------");
             rowIndex++;
             System.out.print(rowIndex + " ");
                 for (Location col : row) {
@@ -46,7 +44,7 @@ public class DisplayMapView {
                 System.out.println("|");        
             // DISPLAY the line      
         }
-        System.out.println("------------------------------------------");
+        System.out.println("----------------------------");
     }
 
 }

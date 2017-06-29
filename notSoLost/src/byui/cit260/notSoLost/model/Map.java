@@ -5,10 +5,8 @@
  */
 package byui.cit260.notSoLost.model;
 
-import buyi.cit260.notSoLost.control.GameControl;
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
  *
@@ -75,25 +73,6 @@ public class Map implements Serializable {
 
     public void setLocations(Location[][] locations) {
         this.locations = locations;
-    }
-
-    
-
-    
-
-    public enum SceneType{
-        crashSite,
-        waterFall,
-        beach,
-        forest,
-        cave,
-        darkForest,
-        volcano,
-        mountain,
-        raftSite,
-        cliff,
-        campSite,
-        pond;
     }
     
     // Hashcode
