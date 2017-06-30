@@ -5,16 +5,21 @@
  */
 package buyi.cit260.notSoLost.control;
 
+import byui.cit260.notSoLost.exceptions.PlayerControlException;
+
 /**
  *
  * @author JSaenz
  */
 public class PlayerControl {
+    
+    private final static int MAX_PACKWEIGHT = 40;
+    public double calcEnergyTravelCost (double currentEnergy, double distanceTraveled,
+                                        double packWeight) throws PlayerControlException{
 
-    public double calcEnergyTravelCost (double currentEnergy, double distanceTraveled, double packWeight){
-
-        if (packWeight > 40) {
-            return -1;
+        if (packWeight > MAX_PACKWEIGHT) {
+            throw new PlayerControlException("You cannot carry more than " + 
+            MAX_PACKWEIGHT + " pounds.");
         }
 
         if (packWeight < 0) {

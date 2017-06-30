@@ -34,13 +34,13 @@ class HealthMenuView extends View{
         value = value.toUpperCase(); // convert value to upper case
 
         switch (value) {
-            case "D": // What is the goal of the game?
+            case "D": // Display current energy.
                 this.currentEnergy();
                 break;
-            case "S": // What is the goal of the game?
+            case "S": // Rest to restore energy.
                 this.restEnergy();
                 break;
-            case "E": // What is the goal of the game?
+            case "E": // Eat to restore energy.
                 this.eatEnergy();
                 break;
             default:

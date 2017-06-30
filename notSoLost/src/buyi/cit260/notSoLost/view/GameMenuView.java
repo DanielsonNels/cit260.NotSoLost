@@ -5,6 +5,13 @@
  */
 package buyi.cit260.notSoLost.view;
 
+import buyi.cit260.notSoLost.control.MapControl;
+import byui.cit260.notSoLost.exceptions.MapControlException;
+import byui.cit260.notSoLost.model.Actor;
+import java.awt.Point;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author JSaenz
@@ -78,8 +85,14 @@ public class GameMenuView extends View{
             case "E": // What is the goal of the game?
                 this.exploreLocationsMenuView();
                 break;
-            case "M": // What is the goal of the game?
+            case "M": {
+            try {
+                // What is the goal of the game?
                 this.moveToLocationView();
+            } catch (MapControlException ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case "L": // What is the goal of the game?
                 this.displayMapView();
@@ -168,11 +181,15 @@ public class GameMenuView extends View{
         ExploreLocationsMenuView exploreLocationsMenu = new ExploreLocationsMenuView();
         exploreLocationsMenu.displayExploreLocationsMenuView();
     }
-
-    private void moveToLocationView() {
+    Actor actor = null;
+    Point coordinates = null;
+    private void moveToLocationView() throws MapControlException {
         // display the move to location menu
-        MoveToLocationView moveToLocation = new MoveToLocationView();
-        moveToLocation.displayMoveToLocationView();
+        try {
+            MapControl.moveActorToLocation(actor, coordinates);
+        } catch (MapControlException me) {
+            System.out.println(me.getMessage());
+        }    
     }
 
     private void displayMapView() {

@@ -5,9 +5,13 @@
  */
 package buyi.cit260.notSoLost.control;
 
+import byui.cit260.notSoLost.exceptions.MapControlException;
+import byui.cit260.notSoLost.model.Actor;
 import byui.cit260.notSoLost.model.Location;
 import byui.cit260.notSoLost.model.Map;
 import byui.cit260.notSoLost.model.RegularSceneType;
+import java.awt.Point;
+import notsolost.NotSoLost;
 
 /**
  *
@@ -28,11 +32,32 @@ public class MapControl {
         return map;
     }
 
-    public static Map moveActorsToStartingLocation() {
-        System.out.println("\n*** moveActorsToStartingLocation() called ***");
-        return null;
+    public static void moveActorsToStartingLocation(Map map) throws MapControlException {
+        Actor[] actors = Actor.values();
+        
+        for (Actor actor : actors) {
+            Point coordinates = actor.getCoordinates();
+            MapControl.moveActorToLocation(actor, coordinates);
+        }
+                
     }
 
+    public static void moveActorToLocation(Actor actor, Point coordinates) throws MapControlException {
+        Map map = NotSoLost.getCurrentGame().getMap();
+        int newRow = coordinates.x-1;
+        int newCol = coordinates.y-1;
+        
+        if (newRow < 0 || newRow >= map.getRowCount() ||
+            newCol < 0 || newCol >= map.getColCount()) {
+            throw new MapControlException("Cannot move actor to location "  
+                                        + coordinates.x + ", " + coordinates.y 
+                                        + " because the location is outside" 
+                                        + " the bounds of the map.");
+        }
+    }
+    
+    
+    
     private static RegularSceneType[] createScenes() {
 
         RegularSceneType[] regularSceneType = new RegularSceneType[SceneType.values().length];

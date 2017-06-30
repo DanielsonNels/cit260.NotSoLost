@@ -38,7 +38,7 @@ class PackWeightCalculatorView {
                 quantity = Integer.parseInt(value);
                 valid = (quantity >= 1);
             }
-            catch (NumberFormatException e) { 
+            catch (NumberFormatException nf) { 
                 valid = false;
             }
                         
@@ -54,7 +54,7 @@ class PackWeightCalculatorView {
                 weight = Double.parseDouble(value);
                 valid = (weight > 0);
             }
-            catch (NumberFormatException e) { 
+            catch (NumberFormatException nf) { 
                 valid = false;
             }
                         

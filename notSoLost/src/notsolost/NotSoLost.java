@@ -42,7 +42,13 @@ public class NotSoLost {
     public static void main(String[] args) {
         
         StartProgramView startProgramView = new StartProgramView();
-        startProgramView.displayStartProgramView();
-        
+        try {
+            //create StartProgramView and start the program        
+        startProgramView.displayStartProgramView();    
+        } catch (Throwable te) {
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            startProgramView.displayStartProgramView();
+        }
     }
 }
