@@ -24,6 +24,8 @@ public class PlayerControl {
     private final static int MIN_REST_HOURS = 1;
     private final static int MAX_REST_HOURS = 10;
     private final static int MIN_NUMFOOD = 1;
+    private final static int MAX_TIMEOFDAY = 2400;
+    private final static int MIN_TIMEOFDAY = 1;
 
     public double calcEnergyTravelCost(double currentEnergy, double distanceTraveled, double packWeight) throws PlayerControlException {
 
@@ -58,12 +60,12 @@ public class PlayerControl {
             throw new PlayerControlException("You cannot rest with less than " + MIN_ENERGY + " energy points");
         }
 
-        if (restHours < MIN_REST_HOURS) {
-            throw new PlayerControlException("You cannot rest for less than " + MIN_REST_HOURS + " hours.");
+        if (restHours < MIN_REST_HOURS || restHours > MAX_REST_HOURS) {
+            throw new PlayerControlException("Invalid value: you cannot rest less than " + MIN_REST_HOURS + " or more than " + MAX_REST_HOURS + " hours");
         }
 
-        if (restHours > MAX_REST_HOURS) {
-            throw new PlayerControlException("You cannot rest for more than " + MAX_REST_HOURS + " hours.");
+        if (timeOfDay < MIN_TIMEOFDAY || timeOfDay > MAX_TIMEOFDAY) {
+            throw new PlayerControlException("Invalid value: time of day cannot be less than " + MIN_TIMEOFDAY + " or more than " + MAX_TIMEOFDAY);
         }
 
         double energyRestGainPerHour = 2;
@@ -105,7 +107,7 @@ public class PlayerControl {
 
     }
 
-    public double calcPackWeight(double currentWeight, double inventoryItemWeight, int inventoryItemQuantity) throws PlayerControlException{
+    public double calcPackWeight(double currentWeight, double inventoryItemWeight, int inventoryItemQuantity) throws PlayerControlException {
 
         if (currentWeight < MIN_PACKWEIGHT) {
             throw new PlayerControlException("The pack weight cannot be less than " + MIN_PACKWEIGHT);

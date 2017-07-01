@@ -9,7 +9,7 @@ package byui.cit260.notSoLost.exceptions;
  *
  * @author JNewland
  */
-public class PlayerControlException extends Exception{
+public class PlayerControlException extends Exception {
 
     public PlayerControlException() {
     }
@@ -29,5 +29,5 @@ public class PlayerControlException extends Exception{
     public PlayerControlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
-    
+
 }

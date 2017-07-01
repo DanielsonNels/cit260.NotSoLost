@@ -16,14 +16,14 @@ import java.util.Scanner;
 class PackWeightCalculatorView {
 
     double currentPackWeight = 0;
-    private String promptMessage = "Please enter a quantity and weight of new item(s):";
+    private final String promptMessage = "Please enter a quantity and weight of new item(s):";
 
     public PackWeightCalculatorView() {
     }
 
     public void displayPackWeightCalculatorView() throws PlayerControlException {
         Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
+        String value; // value to be returned
         boolean valid = false; // initialize to not valid
 
         int quantity = 0;
@@ -72,8 +72,8 @@ class PackWeightCalculatorView {
             PlayerControl playerControl = new PlayerControl();
             currentPackWeight = playerControl.calcPackWeight(currentPackWeight, weight, quantity);
             System.out.println("\n your new pack weight is: " + currentPackWeight);
-        } catch (Exception e) {
-            System.out.println("\n Dude! You can't carry that much!");
+        } catch (PlayerControlException pce) {
+            System.out.println("\n" + pce.getMessage());
         }
     }
 }
