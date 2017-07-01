@@ -45,7 +45,7 @@ public class Raft implements Serializable{
     private int rudderAmount;
 
     public Raft() {
-        
+
     }
     
     
@@ -73,7 +73,7 @@ public class Raft implements Serializable{
         pontoonAmount = amount;
     }
 
-    public boolean hasPontoon() {
+    public boolean hasPontoons() {
         return pontoonAmount > 0;
     }
     
@@ -205,8 +205,6 @@ public class Raft implements Serializable{
         return hasEnoughRope() && hasEnoughPontoons() && hasEnoughFloor() &&
                hasEnoughMast() && hasEnoughSail() && hasEnoughRudder();
     }
-        //return this.hasRope && this.hasPontoons && this.hasFloor 
-               //&& this.hasMast && this.hasSail && this.hasRudder;
 }
     
     
