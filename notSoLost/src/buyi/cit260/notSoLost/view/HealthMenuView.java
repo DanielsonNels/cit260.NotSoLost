@@ -6,7 +6,10 @@
 package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.PlayerControl;
+import byui.cit260.notSoLost.exceptions.PlayerControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -37,8 +40,13 @@ class HealthMenuView extends View{
             case "D": // Display current energy.
                 this.currentEnergy();
                 break;
-            case "S": // Rest to restore energy.
-                this.restEnergy();
+            case "S": { // Rest to restore energy.
+                try {                    
+                    this.restEnergy();
+                } catch (PlayerControlException ex) {
+                    Logger.getLogger(HealthMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
             case "E": // Eat to restore energy.
                 this.eatEnergy();
@@ -55,7 +63,7 @@ class HealthMenuView extends View{
         System.out.println("\n*** displayWreckInventoryMenuView() function called ***");
     }
 
-    private double restEnergy() {
+    private double restEnergy() throws PlayerControlException {
         double restHours = 0;
         double timeOfDay = 0;
         Scanner input = new Scanner(System.in); // get infile for keyboard  

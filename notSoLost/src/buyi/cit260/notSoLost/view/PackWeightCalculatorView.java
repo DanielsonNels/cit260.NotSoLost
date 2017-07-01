@@ -6,6 +6,7 @@
 package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.PlayerControl;
+import byui.cit260.notSoLost.exceptions.PlayerControlException;
 import java.util.Scanner;
 
 /**
@@ -20,14 +21,14 @@ class PackWeightCalculatorView {
     public PackWeightCalculatorView() {
     }
 
-    public void displayPackWeightCalculatorView() {
+    public void displayPackWeightCalculatorView() throws PlayerControlException {
         Scanner keyboard = new Scanner(System.in); // get infile for keyboard
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
 
         int quantity = 0;
         double weight = 0.0;
-        
+
         while (!valid) { // loop while an invalid value is entered
             System.out.println("\n" + promptMessage);
 
@@ -37,11 +38,10 @@ class PackWeightCalculatorView {
             try {
                 quantity = Integer.parseInt(value);
                 valid = (quantity >= 1);
-            }
-            catch (NumberFormatException nf) { 
+            } catch (NumberFormatException nf) {
                 valid = false;
             }
-                        
+
             if (!valid) {
                 System.out.println("\nInvalid quantity: value must be positive integer");
                 continue;
@@ -53,31 +53,27 @@ class PackWeightCalculatorView {
             try {
                 weight = Double.parseDouble(value);
                 valid = (weight > 0);
-            }
-            catch (NumberFormatException nf) { 
+            } catch (NumberFormatException nf) {
                 valid = false;
             }
-                        
+
             if (!valid) {
                 System.out.println("\nInvalid weight: value must be positive");
                 continue;
-            }    
+            }
 
             // do the requested action and display the next view
             this.doAction(quantity, weight);
         }
     }
 
-
-    private void doAction(int quantity, double weight) {
-        PlayerControl actorControl = new PlayerControl();
-        currentPackWeight = actorControl.calcPackWeight(currentPackWeight, weight, quantity);
-        if (currentPackWeight < 0) {
+    private void doAction(int quantity, double weight) throws PlayerControlException {
+        try {
+            PlayerControl playerControl = new PlayerControl();
+            currentPackWeight = playerControl.calcPackWeight(currentPackWeight, weight, quantity);
+            System.out.println("\n your new pack weight is: " + currentPackWeight);
+        } catch (Exception e) {
             System.out.println("\n Dude! You can't carry that much!");
         }
-        else {
-            System.out.println("\n your new pack weight is: " + currentPackWeight);
-        }
-
     }
 }

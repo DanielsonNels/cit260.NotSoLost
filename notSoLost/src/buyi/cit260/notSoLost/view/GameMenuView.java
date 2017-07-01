@@ -7,6 +7,7 @@ package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.MapControl;
 import byui.cit260.notSoLost.exceptions.MapControlException;
+import byui.cit260.notSoLost.exceptions.PlayerControlException;
 import byui.cit260.notSoLost.model.Actor;
 import java.awt.Point;
 import java.util.logging.Level;
@@ -70,8 +71,13 @@ public class GameMenuView extends View{
             case "X": // What is the goal of the game?
                 this.dropResouceMenuView();
                 break;
-            case "P": // Pack weight calculator
-                this.packWeightCalculatorView();
+            case "P": { // Pack weight calculator
+            try {                    
+                    this.packWeightCalculatorView();
+                } catch (PlayerControlException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
             case "I": // What is the goal of the game?
                 this.viewInventoryMenuView();
@@ -146,7 +152,7 @@ public class GameMenuView extends View{
         dropResourceMenu.displayDropResourceMenuView();
     }
 
-    private void packWeightCalculatorView() {
+    private void packWeightCalculatorView() throws PlayerControlException {
         // display the pack weight calculator
         PackWeightCalculatorView packWeightCalculator = new PackWeightCalculatorView();
         packWeightCalculator.displayPackWeightCalculatorView();
