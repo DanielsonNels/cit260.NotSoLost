@@ -50,25 +50,25 @@ public class GameMenuView extends View{
         value = value.toUpperCase(); // convert value to upper case
         
         switch (value) {
-            case "J": // What is the goal of the game?
+            case "J":
                 this.wreckInventoryMenuView();
                 break;
-            case "K": // What is the goal of the game?
+            case "K":
                 this.islandInventoryMenuView();
                 break;
-            case "D": // What is the goal of the game?
+            case "D":
                 this.displayToolsView();
                 break;
-            case "B": // What is the goal of the game?
+            case "B":
                 this.buildToolsMenuView();
                 break;
-            case "W": // What is the goal of the game?
+            case "W": // Work on Raft.
                 this.workOnRaftMenuView();
                 break;
-            case "C": // What is the goal of the game?
+            case "C":
                 this.collectResourceMenuView();
                 break;
-            case "X": // What is the goal of the game?
+            case "X":
                 this.dropResouceMenuView();
                 break;
             case "P": { // Pack weight calculator
@@ -79,28 +79,28 @@ public class GameMenuView extends View{
                 }
             }
                 break;
-            case "I": // What is the goal of the game?
+            case "I":
                 this.viewInventoryMenuView();
                 break;
-            case "R": // What is the goal of the game?
+            case "R": // View Raft status.
                 this.viewRaftStatusView();
                 break;
-            case "O": // What is the goal of the game?
+            case "O":
                 this.healthMenuView();
                 break;
-            case "E": // What is the goal of the game?
+            case "E":
                 this.exploreLocationsMenuView();
                 break;
-            case "M": // What is the goal of the game?
+            case "M":
                 this.moveToLocationView();
                 break;
-            case "L": // What is the goal of the game?
+            case "L":
                 this.displayMapView();
                 break;
-            case "S": // What is the goal of the game?
+            case "S":
                 this.saveGameView();
                 break;
-            case "H": // What is the goal of the game?
+            case "H":
                 this.displayHelpMenu();
                 break;
             default:
@@ -167,7 +167,7 @@ public class GameMenuView extends View{
     private void viewRaftStatusView() {
         // display raft status
         ViewRaftStatusView viewRaftStatus = new ViewRaftStatusView();
-        viewRaftStatus.displayViewRaftStatusView();
+        viewRaftStatus.display();
     }
 
     private void healthMenuView() {

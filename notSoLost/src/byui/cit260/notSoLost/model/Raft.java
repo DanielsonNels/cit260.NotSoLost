@@ -15,12 +15,12 @@ import java.util.Objects;
 
 public class Raft implements Serializable{
 
-    private final static int MAX_ROPE = 40;
-    private final static int MAX_PONTOON = 16;
-    private final static int MAX_FLOOR = 6;
-    private final static int MAX_MAST = 2;
-    private final static int MAX_SAIL = 1; 
-    private final static int MAX_RUDDER = 1;
+    public final static int MAX_ROPE = 40;
+    public final static int MAX_PONTOON = 16;
+    public final static int MAX_FLOOR = 6;
+    public final static int MAX_MAST = 2;
+    public final static int MAX_SAIL = 1; 
+    public final static int MAX_RUDDER = 1;
     
    
     
