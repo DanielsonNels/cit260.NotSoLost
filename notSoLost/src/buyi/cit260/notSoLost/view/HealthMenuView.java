@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author JSaenz
  */
-class HealthMenuView extends View{
+class HealthMenuView extends View {
 
     double currentEnergy = 10;
 
@@ -41,13 +41,13 @@ class HealthMenuView extends View{
                 this.currentEnergy();
                 break;
             case "S": { // Rest to restore energy.
-                try {                    
+                try {
                     this.restEnergy();
                 } catch (PlayerControlException ex) {
                     Logger.getLogger(HealthMenuView.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-                break;
+            break;
             case "E": // Eat to restore energy.
                 this.eatEnergy();
                 break;
@@ -68,40 +68,28 @@ class HealthMenuView extends View{
         double timeOfDay = 0;
         Scanner input = new Scanner(System.in); // get infile for keyboard  
         boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while an invalid value is entered
-            System.out.println("\nPlease enter the amount of hours you would like to rest: ");
-            restHours = input.nextDouble();
-
-            if (restHours > 10 || restHours < 1) { // value is blank
-                System.out.println("\nInvalid value: you cannot rest less than 1 hour or more than 10 hours");
-                continue;
-            }
-            break; // end the loop
-        }        
 
         while (!valid) { // loop while an invalid value is entered
-            System.out.println("\nPlease enter the time of day in military format e.g. 1300 for 1PM: ");
-            timeOfDay = input.nextDouble();
+            try {
 
-            if (timeOfDay > 2400 || timeOfDay < 1) { // value is blank
-                System.out.println("\nInvalid value: time of day cannot be less than 0001 or more than 2400");
-                continue;
+                System.out.println("\nPlease enter the amount of hours you would like to rest: ");
+                restHours = input.nextDouble();
+                System.out.println("\nPlease enter the time of day in military format e.g. 1300 for 1PM: ");
+                timeOfDay = input.nextDouble();
+
+                PlayerControl playerControl = new PlayerControl();
+                currentEnergy = playerControl.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
+                System.out.println("\n your new energy is: " + currentEnergy);
+            } catch (PlayerControlException pce) {
+                System.out.println("\n" + pce.getMessage());
             }
             break; // end the loop
+
         }
-
-        PlayerControl playerControl = new PlayerControl();
-        currentEnergy = playerControl.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
-        System.out.println("\n your new energy is: " + currentEnergy);
-
         return currentEnergy;
     }
-    
+
     private void eatEnergy() {
         System.out.println("\n*** displayWreckInventoryMenuView() function called ***");
     }
-
-
-
 }

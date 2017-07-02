@@ -6,6 +6,7 @@
 package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.InventoryControl;
+import byui.cit260.notSoLost.exceptions.InventoryControlException;
 
 /**
  *
@@ -64,14 +65,24 @@ public class InventoryMenuView extends View{
     }
 
     private void calcTotalItems() {
-        InventoryControl inventoryControl = new InventoryControl.calcTotalItems();
-        double total = inventoryControl.calcTotalItems();
-        System.out.println("\nTotal Items in Inventory: " + total);
+        try {
+            InventoryControl inventoryControl = new InventoryControl.calcTotalItems();
+            double total = inventoryControl.calcTotalItems();
+            System.out.println("\nTotal Items in Inventory: " + total);
+        } 
+        catch (InventoryControlException ice) {
+            System.out.println(ice.getMessage());
+        }
     }
 
     private void calcItemWeight() {
-        InventoryControl inventoryControl = new InventoryControl.calcItemWeight();
-        inventoryControl.calcItemWeight();
+        try {
+            InventoryControl inventoryControl = new InventoryControl.calcItemWeight();
+            inventoryControl.calcItemWeight();
+        }
+        catch (InventoryControlException ice){
+            System.out.println(ice.getMessage());
+        }
     }
     
 }
