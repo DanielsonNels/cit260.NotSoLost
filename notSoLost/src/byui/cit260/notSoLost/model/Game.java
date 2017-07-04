@@ -85,6 +85,7 @@ public class Game implements Serializable {
         return "Game{" + "map=" + map + ", player=" + player + ", actor=" + actor + ", inventoryItem=" + inventoryItem + '}';
     }
 
+    // Equals 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

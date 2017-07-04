@@ -91,6 +91,7 @@ public class Map implements Serializable {
         return "Map{" + "rowCount=" + rowCount + ", colCount=" + colCount + ", locations=" + locations + '}';
     }
 
+    // Equals
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

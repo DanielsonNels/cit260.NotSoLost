@@ -6,8 +6,11 @@
 package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.RaftControl;
+import byui.cit260.notSoLost.exceptions.RaftControlException;
 import byui.cit260.notSoLost.model.Game;
 import byui.cit260.notSoLost.model.Raft;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import notsolost.NotSoLost;
 
 /**
@@ -32,17 +35,21 @@ public class ViewRaftStatusView extends View {
         value = value.toUpperCase(); // convert value to upper case
         
         switch (value) {
-            case "V": // food item list
-                this.calcPercentRaftItems();
-                break;
+            case "V": 
+                try { // Raft item list
+                    this.calcPercentRaftItems();
+                } catch (RaftControlException ex) {
+                    Logger.getLogger(ViewRaftStatusView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                   
+            break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
         }
-        
         return false;
     }
     
-    private void calcPercentRaftItems() {
+    private void calcPercentRaftItems() throws RaftControlException {
         Game game = NotSoLost.getCurrentGame();
         Raft raft = game.getRaft();
         double total = RaftControl.calcPercentRaftItems(raft);

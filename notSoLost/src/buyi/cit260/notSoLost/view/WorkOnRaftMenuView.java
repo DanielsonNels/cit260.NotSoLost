@@ -9,6 +9,8 @@ import buyi.cit260.notSoLost.control.RaftControl;
 import byui.cit260.notSoLost.exceptions.RaftControlException;
 import byui.cit260.notSoLost.model.Game;
 import byui.cit260.notSoLost.model.Raft;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import notsolost.NotSoLost;
 
 /**
@@ -34,20 +36,30 @@ public class WorkOnRaftMenuView extends View {
         value = value.toUpperCase(); // convert value to upper case
         
         switch (value) {
-            case "V": // View total Raft items.
-                this.calcTotalRaftItems();
-                break;
-            case "A": // Add to Raft.
-                this.addRaftItems();
-                break;
+            case "V": { // View total Raft items.
+                try {                 
+                    this.calcTotalRaftItems();
+                } catch (RaftControlException ex) {
+                    Logger.getLogger(WorkOnRaftMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+            case "A": { // Add items to Raft.
+                try {
+                    this.addRaftItems();
+                } catch (RaftControlException ex) {
+                    Logger.getLogger(WorkOnRaftMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
         }
-        
+
         return false;
     }
 
-    private void calcTotalRaftItems() {
+    private void calcTotalRaftItems() throws RaftControlException {
         Game game = NotSoLost.getCurrentGame();
         Raft raft = game.getRaft();
         double total = RaftControl.calcTotalRaftItems(raft);
@@ -55,7 +67,7 @@ public class WorkOnRaftMenuView extends View {
 
     }
 
-    private void addRaftItems() {
+    private void addRaftItems() throws RaftControlException {
         Game game = NotSoLost.getCurrentGame();
         Raft raft = game.getRaft();
         double total = RaftControl.addRaftItems(raft);

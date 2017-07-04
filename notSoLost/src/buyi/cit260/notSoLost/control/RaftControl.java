@@ -68,15 +68,33 @@ public class RaftControl {
     }
     
     public static double calcTotalRaftItems(Raft raft) {
-        return 0;
-    }
+        int curRopeAmount = 0;
+        int curPontoonAmount = 0;
+        int curFloorAmount = 0;
+        int curMastAmount = 0;
+        int curSailAmount = 0;
+        int curRudderAmount = 0;
+        int totalRaftItemCount = (curRopeAmount + curPontoonAmount + curFloorAmount + 
+                curMastAmount + curSailAmount + curRudderAmount);
+        return totalRaftItemCount;    }
 
     public static double calcPercentRaftItems(Raft raft) {
-        return 0;
+        int totalRaftItemCount = 0;
+        int totalRaftComplete = 1;
+        int percentRaftComplete = (totalRaftItemCount / totalRaftComplete);
+        return percentRaftComplete;
     }
     
     public static double addRaftItems(Raft raft) {
-        return 0;
+        int ropeAmount = 10;
+        int pontoonAmount = 2;
+        int floorAmount = 1;
+        int mastAmount = 1;
+        int sailAmount = 1;
+        int rudderAmount = 1;
+        int total = (ropeAmount + pontoonAmount + floorAmount + mastAmount +
+                sailAmount + rudderAmount);
+        return total;
     }
 
 

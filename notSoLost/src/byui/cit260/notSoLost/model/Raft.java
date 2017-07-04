@@ -26,23 +26,23 @@ public class Raft implements Serializable{
     
     // class instance variables
     
-    private boolean hasRope;
-    private int ropeAmount;
+    public boolean hasRope;
+    public int ropeAmount;
     
-    private boolean hasPontoons;  
-    private int pontoonAmount;
+    public boolean hasPontoons;  
+    public int pontoonAmount;
     
-    private boolean hasFloor;  
-    private int floorAmount;
+    public boolean hasFloor;  
+    public int floorAmount;
     
-    private boolean hasMast;  
-    private int mastAmount;
+    public boolean hasMast;  
+    public int mastAmount;
     
-    private boolean hasSail;  
-    private int sailAmount;
+    public boolean hasSail;  
+    public int sailAmount;
     
-    private boolean hasRudder;  
-    private int rudderAmount;
+    public boolean hasRudder;  
+    public int rudderAmount;
 
     public Raft() {
 
@@ -166,7 +166,7 @@ public class Raft implements Serializable{
                 + " hasSail=" + hasSail + ", hasRudder=" + hasRudder + '}';
     }
 
-    
+    //Equals
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
