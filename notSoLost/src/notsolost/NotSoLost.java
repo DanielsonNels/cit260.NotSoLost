@@ -73,12 +73,12 @@ public class NotSoLost {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        StartProgramView startProgramView = new StartProgramView();
+        
         try {
             // open charcter stream files for end user input and output
             NotSoLost.inFile = new BufferedReader(new InputStreamReader(System.in));
             NotSoLost.outFile = new PrintWriter(System.out, true);
+            StartProgramView startProgramView = new StartProgramView();
             
             // open log file
             String filePath = "log.txt";
@@ -89,7 +89,7 @@ public class NotSoLost {
         } catch (Throwable te) {
             System.out.println(te.getMessage());
             te.printStackTrace();
-            startProgramView.displayStartProgramView();
+            //startProgramView.displayStartProgramView();
         } finally {
             try {
                 if (NotSoLost.inFile != null)   

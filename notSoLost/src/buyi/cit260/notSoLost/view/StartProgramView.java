@@ -62,7 +62,7 @@ public class StartProgramView {
     }
 
     private String getPlayersName() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
+        //Scanner keyboard = new Scanner(System.in); // get infile for keyboard
         String value = null; // value to be returned
         boolean valid = false; // initialize to not valid
 
@@ -70,7 +70,7 @@ public class StartProgramView {
             while (!valid) { // loop while an invalid value is entered
                 System.out.println("\n" + this.promptMessage);
 
-                value = keyboard.nextLine(); // get next line typed on keyboard
+                value = keyboard.readLine(); // get next line typed on keyboard
                 value = value.trim(); // trim off leading and trailing blanks
 
                 if (value.length() < 1) { // value is blank
