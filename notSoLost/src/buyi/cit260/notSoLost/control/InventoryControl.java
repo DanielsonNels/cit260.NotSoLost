@@ -6,10 +6,13 @@
 package buyi.cit260.notSoLost.control;
 
 import byui.cit260.notSoLost.exceptions.InventoryControlException;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.stream.IntStream;
+import notsolost.NotSoLost;
 
 /**
  *
@@ -17,15 +20,18 @@ import java.util.stream.IntStream;
  */
 public class InventoryControl {
 
+    public final BufferedReader keyboard = NotSoLost.getInFile();
+    protected final PrintWriter console = NotSoLost.getOutFile();
+
     public double calcTotalItems() throws InventoryControlException {
         int[] amounts = {6, 5, 1, 8, 0, 12, 4, 1, 4, 2};
-    
+
         int total = 0;
-        
+
         for (int amount : amounts) {
             total += amount;
         }
-        
+
         return total;
     }
 
@@ -38,8 +44,8 @@ public class InventoryControl {
     public void calcItemWeight() throws InventoryControlException {
         boolean contains = false;
         int[] weights = {10, 12, 5, 2, 9, 6, 7, 1, 8, 4, 3, 13};
-        System.out.println(Arrays.toString(weights));   
-        
+        System.out.println(Arrays.toString(weights));
+
         int min, max;
         min = max = weights[0];
         for (int i = 0; i < weights.length; i++) {
@@ -61,24 +67,26 @@ public class InventoryControl {
         int lastNumber = weights[weights.length - 1];
         System.out.println("Last number in array: " + lastNumber);
 
-        while (!contains) {
-            Scanner reader = new Scanner(System.in);
-            System.out.println("Enter a value to search in array 'ItemWeights': ");
+        try {
+            while (!contains) {
+                //Scanner reader = new Scanner(System.in);
+                System.out.println("Enter a value to search in array 'ItemWeights': ");
 
-            try {
-                int value = reader.nextInt();
-                contains = IntStream.of(weights).anyMatch(x -> x == value);
+                try {
+                    int value = Integer.parseInt(keyboard.readLine());
+                    contains = IntStream.of(weights).anyMatch(x -> x == value);
 
-                if (contains == true) {
-                    System.out.println("Seach result for the value " + value + " was succesful");
-                } 
-                else {
-                    System.out.println("\nA value of " + value + " wasn't found. Please try again.");
+                    if (contains == true) {
+                        System.out.println("Seach result for the value " + value + " was succesful");
+                    } else {
+                        System.out.println("\nA value of " + value + " wasn't found. Please try again.");
+                    }
+                } catch (InputMismatchException im) {
+                    System.out.println("\nNot a valid number. Please try again");
                 }
             }
-            catch (InputMismatchException im) {
-                System.out.println("\nNot a valid number. Please try again");
-            }
+        } catch (Exception e) {
+            System.out.println("Error reading input: " + e.getMessage());
         }
     }
 

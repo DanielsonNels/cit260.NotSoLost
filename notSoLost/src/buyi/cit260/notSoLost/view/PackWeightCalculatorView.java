@@ -7,7 +7,10 @@ package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.PlayerControl;
 import byui.cit260.notSoLost.exceptions.PlayerControlException;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import notsolost.NotSoLost;
 
 /**
  *
@@ -18,52 +21,59 @@ class PackWeightCalculatorView {
     double currentPackWeight = 0;
     private final String promptMessage = "Please enter a quantity and weight of new item(s):";
 
+    public final BufferedReader keyboard = NotSoLost.getInFile();
+    protected final PrintWriter console = NotSoLost.getOutFile();
+
     public PackWeightCalculatorView() {
     }
 
     public void displayPackWeightCalculatorView() throws PlayerControlException {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
+
         String value; // value to be returned
         boolean valid = false; // initialize to not valid
 
         int quantity = 0;
         double weight = 0.0;
 
-        while (!valid) { // loop while an invalid value is entered
-            System.out.println("\n" + promptMessage);
+        try {
+            while (!valid) { // loop while an invalid value is entered
+                System.out.println("\n" + promptMessage);
 
-            value = keyboard.nextLine(); // get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
+                value = keyboard.readLine(); // get next line typed on keyboard
+                value = value.trim(); // trim off leading and trailing blanks
 
-            try {
-                quantity = Integer.parseInt(value);
-                valid = (quantity >= 1);
-            } catch (NumberFormatException nf) {
-                valid = false;
+                try {
+                    quantity = Integer.parseInt(value);
+                    valid = (quantity >= 1);
+                } catch (NumberFormatException nf) {
+                    valid = false;
+                }
+
+                if (!valid) {
+                    System.out.println("\nInvalid quantity: value must be positive integer");
+                    continue;
+                }
+
+                value = keyboard.readLine(); // get next line typed on keyboard
+                value = value.trim(); // trim off leading and trailing blanks
+
+                try {
+                    weight = Double.parseDouble(value);
+                    valid = (weight > 0);
+                } catch (NumberFormatException nf) {
+                    valid = false;
+                }
+
+                if (!valid) {
+                    System.out.println("\nInvalid weight: value must be positive");
+                    continue;
+                }
+
+                // do the requested action and display the next view
+                this.doAction(quantity, weight);
             }
-
-            if (!valid) {
-                System.out.println("\nInvalid quantity: value must be positive integer");
-                continue;
-            }
-
-            value = keyboard.nextLine(); // get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-
-            try {
-                weight = Double.parseDouble(value);
-                valid = (weight > 0);
-            } catch (NumberFormatException nf) {
-                valid = false;
-            }
-
-            if (!valid) {
-                System.out.println("\nInvalid weight: value must be positive");
-                continue;
-            }
-
-            // do the requested action and display the next view
-            this.doAction(quantity, weight);
+        } catch (Exception e) {
+            System.out.println("Error readin input: " + e.getMessage());
         }
     }
 

@@ -7,9 +7,12 @@ package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.PlayerControl;
 import byui.cit260.notSoLost.exceptions.PlayerControlException;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import notsolost.NotSoLost;
 
 /**
  *
@@ -18,6 +21,9 @@ import java.util.logging.Logger;
 class HealthMenuView extends View {
 
     double currentEnergy = 10;
+
+    public final BufferedReader keyboard = NotSoLost.getInFile();
+    protected final PrintWriter console = NotSoLost.getOutFile();
 
     public HealthMenuView() {
         super("\n"
@@ -66,25 +72,29 @@ class HealthMenuView extends View {
     private double restEnergy() throws PlayerControlException {
         double restHours = 0;
         double timeOfDay = 0;
-        Scanner input = new Scanner(System.in); // get infile for keyboard  
+
         boolean valid = false; // initialize to not valid
 
-        while (!valid) { // loop while an invalid value is entered
-            try {
+        try {
+            while (!valid) { // loop while an invalid value is entered
+                try {
 
-                System.out.println("\nPlease enter the amount of hours you would like to rest: ");
-                restHours = input.nextDouble();
-                System.out.println("\nPlease enter the time of day in military format e.g. 1300 for 1PM: ");
-                timeOfDay = input.nextDouble();
+                    System.out.println("\nPlease enter the amount of hours you would like to rest: ");
+                    restHours = Double.parseDouble(this.keyboard.readLine());
+                    System.out.println("\nPlease enter the time of day in military format e.g. 1300 for 1PM: ");
+                    timeOfDay = Double.parseDouble(this.keyboard.readLine());
 
-                PlayerControl playerControl = new PlayerControl();
-                currentEnergy = playerControl.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
-                System.out.println("\n your new energy is: " + currentEnergy);
-            } catch (PlayerControlException pce) {
-                System.out.println("\n" + pce.getMessage());
+                    PlayerControl playerControl = new PlayerControl();
+                    currentEnergy = playerControl.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
+                    System.out.println("\n your new energy is: " + currentEnergy);
+                } catch (PlayerControlException pce) {
+                    System.out.println("\n" + pce.getMessage());
+                }
+                break; // end the loop
+
             }
-            break; // end the loop
-
+        } catch (Exception e) {
+            System.out.println("Error reading input: " + e.getMessage());
         }
         return currentEnergy;
     }
