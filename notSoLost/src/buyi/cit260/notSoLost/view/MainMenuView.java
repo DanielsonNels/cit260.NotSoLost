@@ -76,9 +76,13 @@ public class MainMenuView extends View {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
         
-        // display the StartSavedGameView
-        StartSavedGameView startSavedGame = new StartSavedGameView();
-        startSavedGame.displaySavedGameView();
+        // display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+        
+          // display the StartSavedGameView
+        // StartSavedGameView startSavedGame = new StartSavedGameView();
+        // startSavedGame.displaySavedGameView();
     }
 
     private void displayHelpMenu() {
@@ -101,8 +105,8 @@ public class MainMenuView extends View {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
 
-        // display the StartSavedGameView
-        SaveGameView saveGame = new SaveGameView();
-        saveGame.displayCurrentGameView();
+          // display the StartSavedGameView
+        // SaveGameView saveGame = new SaveGameView();
+        // saveGame.displayCurrentGameView();
     }   
 }
