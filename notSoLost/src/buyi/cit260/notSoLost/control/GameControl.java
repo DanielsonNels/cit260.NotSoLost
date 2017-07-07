@@ -6,11 +6,16 @@
 package buyi.cit260.notSoLost.control;
 
 
+import byui.cit260.notSoLost.exceptions.GameControlException;
 import byui.cit260.notSoLost.model.Actor;
 import byui.cit260.notSoLost.model.Game;
 import byui.cit260.notSoLost.model.InventoryItem;
 import byui.cit260.notSoLost.model.Map;
 import byui.cit260.notSoLost.model.Player;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import notsolost.NotSoLost;
 
 /**
@@ -32,7 +37,39 @@ public class GameControl {
         game.setInventoryItem(inventoryItem);
         
     }
+    
+    public static void saveGame(Game game, String filePath)
+        throws GameControlException {
+        
+        try( FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(game); //write the game object out to file
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+    
+    }    
 
+    public static void getSavedGame(String filePath)
+                        throws GameControlException {
+        Game game = null;
+        
+        try( FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            game = (Game) input.readObject(); //read the game object from file
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        // close the output file
+        NotSoLost.setCurrentGame(game); // save in NotSoLost
+    }    
+    
+    
     public static Player createPlayer(String name) {
         if (name == null) {
             return null;

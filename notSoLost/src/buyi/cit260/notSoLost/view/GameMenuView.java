@@ -38,7 +38,6 @@ public class GameMenuView extends View{
             + "\nE - Explore locations"
             + "\nM - Move to a location"
             + "\nL - DisplayMap"
-            + "\nS - Save game"
             + "\nH - Help menu"
             + "\nQ - Quit to main menu"
             + "\n----------------------------------------------");
@@ -96,9 +95,6 @@ public class GameMenuView extends View{
                 break;
             case "L":
                 this.displayMapView();
-                break;
-            case "S":
-                this.saveGameView();
                 break;
             case "H":
                 this.displayHelpMenu();
@@ -192,12 +188,6 @@ public class GameMenuView extends View{
         // display current location
         DisplayMapView displayMap = new DisplayMapView();
         displayMap.displayMap();
-    }
-
-    private void saveGameView() {
-        // Save game
-        SaveGameView saveGame = new SaveGameView();
-        saveGame.displaySaveGameView();
     }
 
     private void displayHelpMenu() {

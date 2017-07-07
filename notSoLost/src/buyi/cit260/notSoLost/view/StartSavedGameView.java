@@ -5,20 +5,22 @@
  */
 package buyi.cit260.notSoLost.view;
 
+import buyi.cit260.notSoLost.control.GameControl;
+import notsolost.NotSoLost;
+
 /**
  *
- * @author JSaenz
+ * @author JNewland
  */
-class SaveGameView extends View {
-
-    public void displayCurrentGameView() {
-    System.out.println("\n*** displayCurrentGameView() function called ***");
-
+class StartSavedGameView extends View {
+ 
+        public void displaySavedGameView() {
+        System.out.println("\n*** displaySavedGameView() function called ***");
     }
 
     @Override
     public boolean doAction(String value) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

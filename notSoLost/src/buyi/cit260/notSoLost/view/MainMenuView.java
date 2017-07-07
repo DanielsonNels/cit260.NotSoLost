@@ -6,6 +6,7 @@
 package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.GameControl;
+import byui.cit260.notSoLost.exceptions.GameControlException;
 import notsolost.NotSoLost;
 
 /**
@@ -37,7 +38,7 @@ public class MainMenuView extends View {
                 this.startNewGame();
                 break;
             case "G": // get and start an existing game
-                this.startExistingGame();
+                this.startSavedGame();
                 break;
             case "H": // display the help menu
                 this.displayHelpMenu();
@@ -61,8 +62,23 @@ public class MainMenuView extends View {
         gameMenu.display();
     }
 
-    private void startExistingGame() {
-        System.out.println("*** startExistingGame fucntion called ***");
+    private void startSavedGame() {
+        // prompt for and get the name of the file the saved game is in
+        this.console.println("\n\nEnter the file path for file where the game "
+                           + "was saved.");
+        
+        String filePath = this.getInput();
+        
+        try {
+            //start a saved game
+            GameControl.getSavedGame(filePath);
+        } catch (GameControlException ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        // display the StartSavedGameView
+        StartSavedGameView startSavedGame = new StartSavedGameView();
+        startSavedGame.displaySavedGameView();
     }
 
     private void displayHelpMenu() {
@@ -72,7 +88,21 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-        System.out.println("*** saveGame fucntion called ***");
-    }
+        // Prompt for and get the name of the file to save the game in
+        this.console.println("\n\nEnter the file path for file where the game "
+                           + "is to be saved.");
+        
+        String filePath = this.getInput();
+        
+        try {
+            //save the game to the specified file
+            GameControl.saveGame(NotSoLost.getCurrentGame(), filePath);
+        } catch (GameControlException ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
 
+        // display the StartSavedGameView
+        SaveGameView saveGame = new SaveGameView();
+        saveGame.displayCurrentGameView();
+    }   
 }
