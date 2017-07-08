@@ -68,4 +68,26 @@ public abstract class View implements ViewInterface {
         return value; // return the value entered
     }
 
+    @Override
+    public String getPathInput() {
+        boolean valid = false; // initialize to not valid
+        String value = null; // value to be returned
+        try {
+            while (!valid) { // loop while an invalid value is entered
+                value = keyboard.readLine(); // get next line typed on keyboard
+                value = value.trim(); // trim off leading and trailing blanks
+
+                if (value.length() < 1) { // value is blank
+                    System.out.println("\n*** You must enter a value *** ");
+                    continue;
+                }
+
+                break; // end the loop
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading input: " + e.getMessage());
+        }
+        return value; // return the value entered
+    }
+
 }
