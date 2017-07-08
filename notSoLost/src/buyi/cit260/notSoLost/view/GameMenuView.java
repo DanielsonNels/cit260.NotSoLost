@@ -5,49 +5,58 @@
  */
 package buyi.cit260.notSoLost.view;
 
+import buyi.cit260.notSoLost.control.GameControl;
 import buyi.cit260.notSoLost.control.MapControl;
+import byui.cit260.notSoLost.exceptions.GameControlException;
 import byui.cit260.notSoLost.exceptions.MapControlException;
 import byui.cit260.notSoLost.exceptions.PlayerControlException;
 import byui.cit260.notSoLost.model.Actor;
 import java.awt.Point;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import notsolost.NotSoLost;
 
 /**
  *
  * @author JSaenz
  */
-public class GameMenuView extends View{
-    
-    public GameMenuView(){
+public class GameMenuView extends View {
+
+    public GameMenuView() {
         super("\n"
-            + "\n----------------------------------------------"
-            + "\n| Game Menu                                  |"
-            + "\n----------------------------------------------"
-            + "\nJ - Wreckage inventory menu"
-            + "\nK - Inventory menu"
-            + "\nD - Display tools"
-            + "\nB - Build tools"
-            + "\nW - Work on raft"
-            + "\nC - Collect resource"
-            + "\nX - Drop resource"
-            + "\nP - Pack Weight Calculator"
-            + "\nI - View inventory"
-            + "\nR - View raft status"
-            + "\nO - Health menu"
-            + "\nE - Explore locations"
-            + "\nM - Move to a location"
-            + "\nL - DisplayMap"
-            + "\nH - Help menu"
-            + "\nQ - Quit to main menu"
-            + "\n----------------------------------------------");
+                + "\n----------------------------------------------"
+                + "\n| Game Menu                                  |"
+                + "\n----------------------------------------------"
+                + "\nJ - Wreckage inventory menu"
+                + "\nK - Inventory menu"
+                + "\nD - Display tools"
+                + "\nB - Build tools"
+                + "\nW - Work on raft"
+                + "\nC - Collect resource"
+                + "\nX - Drop resource"
+                + "\nP - Pack Weight Calculator"
+                + "\nI - View inventory"
+                + "\nR - View raft status"
+                + "\nO - Health menu"
+                + "\nE - Explore locations"
+                + "\nM - Move to a location"
+                + "\nL - Display Map"
+                + "\nMR - Print Island Map Report"
+                + "\nH - Help menu"
+                + "\nQ - Quit to main menu"
+                + "\n----------------------------------------------");
     }
-    
+
     @Override
     public boolean doAction(String value) {
-        
+
         value = value.toUpperCase(); // convert value to upper case
-        
+
         switch (value) {
             case "J":
                 this.wreckInventoryMenuView();
@@ -71,13 +80,13 @@ public class GameMenuView extends View{
                 this.dropResouceMenuView();
                 break;
             case "P": { // Pack weight calculator
-            try {                    
+                try {
                     this.packWeightCalculatorView();
                 } catch (PlayerControlException ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-                break;
+            break;
             case "I":
                 this.viewInventoryMenuView();
                 break;
@@ -96,13 +105,21 @@ public class GameMenuView extends View{
             case "L":
                 this.displayMapView();
                 break;
+            case "MR": { // Creates Map Report
+                try {
+                    this.printMapReport();
+                } catch (GameControlException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
             case "H":
                 this.displayHelpMenu();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
         }
-        
+
         return false;
     }
 
@@ -159,7 +176,7 @@ public class GameMenuView extends View{
         ViewInventoryMenuView viewInventoryMenu = new ViewInventoryMenuView();
         viewInventoryMenu.displayViewInventoryMenuView();
     }
-    
+
     private void viewRaftStatusView() {
         // display raft status
         ViewRaftStatusView viewRaftStatus = new ViewRaftStatusView();
@@ -190,10 +207,28 @@ public class GameMenuView extends View{
         displayMap.displayMap();
     }
 
+    private void printMapReport() throws GameControlException {
+        // Prompt for and get the name of the file to save the game in
+        this.console.println("\n\nEnter the file path for file where the game "
+                           + "is to be saved.");
+        
+        String filePath = this.getPathInput();
+        
+        DisplayMapView displayMap = new DisplayMapView();
+        
+        try {
+            //save the game to the specified file
+            GameControl.saveReport(displayMap, filePath);
+        } catch (GameControlException ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+
+    }
+
     private void displayHelpMenu() {
         // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
-    
+
 }
