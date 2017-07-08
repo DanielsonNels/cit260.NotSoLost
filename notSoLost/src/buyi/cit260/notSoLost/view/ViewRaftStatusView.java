@@ -25,6 +25,7 @@ public class ViewRaftStatusView extends View {
             + "\n| - Raft Status                              |"
             + "\n----------------------------------------------"
             + "\nV - View Raft Progress                        "
+            + "\nD - Display Raft Items                        "    
             + "\nQ - Quit to main menu                         "
             + "\n----------------------------------------------");
     }
@@ -36,15 +37,23 @@ public class ViewRaftStatusView extends View {
         
         switch (value) {
             case "V": 
-                try { // Raft item list
+                try { // Raft progress
                     this.calcPercentRaftItems();
                 } catch (RaftControlException ex) {
                     Logger.getLogger(ViewRaftStatusView.class.getName()).log(Level.SEVERE, null, ex);
                 }
                    
             break;
+            case "D": 
+                try { // Raft item list
+                    this.viewRaftItems();
+                } catch (RaftControlException ex) {
+                    Logger.getLogger(ViewRaftStatusView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                   
+            break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
         }
         return false;
     }
@@ -53,7 +62,12 @@ public class ViewRaftStatusView extends View {
         Game game = NotSoLost.getCurrentGame();
         Raft raft = game.getRaft();
         double total = RaftControl.calcPercentRaftItems(raft);
-        System.out.println("\nPercent of total items needed in Raft Inventory: " + total);
+        console.println("\nPercent of total items needed in Raft Inventory: " + total);
+    }
+
+    private void viewRaftItems() throws RaftControlException {
+        DisplayRaftView displayRaft = new DisplayRaftView();
+        displayRaft.display(console);
     }
 
 }

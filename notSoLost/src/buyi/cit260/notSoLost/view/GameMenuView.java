@@ -32,23 +32,24 @@ public class GameMenuView extends View {
                 + "\n----------------------------------------------"
                 + "\n| Game Menu                                  |"
                 + "\n----------------------------------------------"
-                + "\nJ - Wreckage inventory menu"
-                + "\nK - Inventory menu"
-                + "\nD - Display tools"
-                + "\nB - Build tools"
-                + "\nW - Work on raft"
-                + "\nC - Collect resource"
-                + "\nX - Drop resource"
-                + "\nP - Pack Weight Calculator"
-                + "\nI - View inventory"
-                + "\nR - View raft status"
-                + "\nO - Health menu"
-                + "\nE - Explore locations"
-                + "\nM - Move to a location"
-                + "\nL - Display Map"
+                + "\nJ  - Wreckage inventory menu"
+                + "\nK  - Inventory menu"
+                + "\nD  - Display tools"
+                + "\nB  - Build tools"
+                + "\nW  - Work on raft"
+                + "\nC  - Collect resource"
+                + "\nX  - Drop resource"
+                + "\nP  - Pack Weight Calculator"
+                + "\nI  - View inventory"
+                + "\nR  - View raft status"
+                + "\nO  - Health menu"
+                + "\nE  - Explore locations"
+                + "\nM  - Move to a location"
+                + "\nL  - Display Map"
                 + "\nMR - Print Island Map Report"
-                + "\nH - Help menu"
-                + "\nQ - Quit to main menu"
+                + "\nRR - Print Raft Report"
+                + "\nH  - Help menu"
+                + "\nQ  - Quit to main menu"
                 + "\n----------------------------------------------");
     }
 
@@ -113,6 +114,9 @@ public class GameMenuView extends View {
                 }
             }
             break;
+            case "RR": // Creates Raft Report
+                this.printRaftReport();
+                break;
             case "H":
                 this.displayHelpMenu();
                 break;
@@ -204,21 +208,35 @@ public class GameMenuView extends View {
     private void displayMapView() {
         // display current location
         DisplayMapView displayMap = new DisplayMapView();
-        displayMap.displayMap();
+        displayMap.display(this.console);
     }
 
     private void printMapReport() throws GameControlException {
-        // Prompt for and get the name of the file to save the game in
-        this.console.println("\n\nEnter the file path for file where the game "
-                           + "is to be saved.");
-        
-        String filePath = this.getPathInput();
+        // Prompt for and get the name of the file to print the report
+        String filePath = this.getInput("Enter the file path for file where the "
+                           + "report is to be written.");
         
         DisplayMapView displayMap = new DisplayMapView();
         
         try {
-            //save the game to the specified file
+            //save the report to the specified file
             GameControl.saveReport(displayMap, filePath);
+            this.console.println("Success! You saved the report.");
+        } catch (GameControlException ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+    }
+    private void printRaftReport() {
+        // Prompt for and get the name of the file to print the report
+        String filePath = this.getInput("Enter the file path for file where the "
+                           + "report is to be written.");
+        
+        DisplayRaftView displayRaft = new DisplayRaftView();
+        
+        try {
+            //save the report to the specified file
+            GameControl.saveReport(displayRaft, filePath);
+            this.console.println("Success! You saved the report.");
         } catch (GameControlException ex) {
             ErrorView.display("GameMenuView", ex.getMessage());
         }

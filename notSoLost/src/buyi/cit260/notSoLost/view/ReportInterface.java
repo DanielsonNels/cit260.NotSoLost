@@ -5,15 +5,13 @@
  */
 package buyi.cit260.notSoLost.view;
 
+import java.io.PrintWriter;
+
 /**
  *
- * @author Nels
+ * @author JNewland
  */
-public interface ViewInterface {
+public interface ReportInterface {
     
-    public void display();
-    public String getInput();
-    public String getInput(String message);
-    public boolean doAction(String value);
-    
+    public void display(PrintWriter writer);
 }

@@ -64,10 +64,8 @@ public class MainMenuView extends View {
 
     private void startSavedGame() {
         // prompt for and get the name of the file the saved game is in
-        this.console.println("\n\nEnter the file path for file where the game "
+        String filePath = this.getInput("Enter the file path for file where the game "
                            + "was saved.");
-        
-        String filePath = this.getPathInput();
         
         try {
             //start a saved game
@@ -78,11 +76,7 @@ public class MainMenuView extends View {
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
-        
-          // display the StartSavedGameView
-        // StartSavedGameView startSavedGame = new StartSavedGameView();
-        // startSavedGame.displaySavedGameView();
+        gameMenu.display();        
     }
 
     private void displayHelpMenu() {
@@ -93,10 +87,8 @@ public class MainMenuView extends View {
 
     private void saveGame() {
         // Prompt for and get the name of the file to save the game in
-        this.console.println("\n\nEnter the file path for file where the game "
+        String filePath = this.getInput("Enter the file path for file where the game "
                            + "is to be saved.");
-        
-        String filePath = this.getPathInput();
         
         try {
             //save the game to the specified file
@@ -104,10 +96,6 @@ public class MainMenuView extends View {
         } catch (GameControlException ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
-
-          // display the StartSavedGameView
-        // SaveGameView saveGame = new SaveGameView();
-        // saveGame.displayCurrentGameView();
     }       
 
 }

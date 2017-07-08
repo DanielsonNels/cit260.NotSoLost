@@ -5,46 +5,47 @@
  */
 package buyi.cit260.notSoLost.view;
 
-
 import byui.cit260.notSoLost.model.Game;
 import byui.cit260.notSoLost.model.Location;
+import java.io.PrintWriter;
 import notsolost.NotSoLost;
 
 /**
  *
  * @author JSaenz
  */
-public class DisplayMapView {
-    
-     public void displayMap() {
+public class DisplayMapView implements ReportInterface {
+
+    @Override
+    public void display(PrintWriter writer) {
         StringBuilder line;
 
         Game game = NotSoLost.getCurrentGame();
         Location[][] locations = game.getMap().getLocations();
 
-        System.out.println("\n          ISLAND MAP");
+        writer.println("\n          ISLAND MAP");
         line = new StringBuilder("                                     ");
         line.insert(4, "1");
         line.insert(9, "2");
         line.insert(14, "3");
         line.insert(19, "4");
         line.insert(24, "5");
-        System.out.println(line.toString());
+        writer.println(line.toString());
 
         // for each map item
         int rowIndex = 0;
         for (Location[] row : locations) {
-            System.out.println("----------------------------");
+            writer.println("----------------------------");
             rowIndex++;
-            System.out.print(rowIndex + " ");
-                for (Location col : row) {
-                    System.out.print("|");
-                    System.out.print(col.getRegularSceneType().getSymbol());
-                }
-                System.out.println("|");        
+            writer.print(rowIndex + " ");
+            for (Location col : row) {
+                writer.print("|");
+                writer.print(col.getRegularSceneType().getSymbol());
+            }
+            writer.println("|");
             // DISPLAY the line      
         }
-        System.out.println("----------------------------");
+        writer.println("----------------------------");
     }
 
 }

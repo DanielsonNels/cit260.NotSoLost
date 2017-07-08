@@ -5,17 +5,19 @@
  */
 package buyi.cit260.notSoLost.control;
 
-import buyi.cit260.notSoLost.view.DisplayMapView;
 import byui.cit260.notSoLost.exceptions.GameControlException;
 import byui.cit260.notSoLost.model.Actor;
 import byui.cit260.notSoLost.model.Game;
 import byui.cit260.notSoLost.model.InventoryItem;
 import byui.cit260.notSoLost.model.Map;
 import byui.cit260.notSoLost.model.Player;
+import buyi.cit260.notSoLost.view.ReportInterface;
+import byui.cit260.notSoLost.model.Raft;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import notsolost.NotSoLost;
 
 /**
@@ -29,6 +31,7 @@ public class GameControl {
         NotSoLost.setCurrentGame(game); // save in NotSoLost
 
         game.setPlayer(player);
+        game.setRaft(new Raft());
 
         Map map = MapControl.createMAP();
         game.setMap(map);
@@ -51,17 +54,15 @@ public class GameControl {
 
     }
 
-    public static void saveReport(DisplayMapView map, String filePath)
+    public static void saveReport(ReportInterface report, String filePath)
             throws GameControlException {
 
-        try (FileOutputStream fops = new FileOutputStream(filePath)) {
-            ObjectOutputStream output = new ObjectOutputStream(fops);
-
-            output.writeObject(map); //write the game object out to file
+        try (PrintWriter writer = new PrintWriter(filePath)) {
+            report.display(writer);
         } catch (Exception e) {
             throw new GameControlException(e.getMessage());
         }
-
+        
     }
 
     public static void getSavedGame(String filePath)
