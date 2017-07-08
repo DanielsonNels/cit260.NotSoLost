@@ -87,7 +87,7 @@ public class NotSoLost {
             //create StartProgramView and start the program        
             startProgramView.displayStartProgramView();
         } catch (Throwable te) {
-            System.out.println(te.toString());
+            System.out.println(te.getMessage());
             te.printStackTrace();
             //startProgramView.displayStartProgramView();
         } finally {
