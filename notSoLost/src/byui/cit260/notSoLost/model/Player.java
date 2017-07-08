@@ -25,7 +25,8 @@ public class Player implements Serializable{
     
     // Default Constructor
     public Player() {
-        coordinates = new Point(1,1);        
+        coordinates = new Point(1,1);
+        energyLevel = 1;
     }
 
     

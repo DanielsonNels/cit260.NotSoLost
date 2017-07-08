@@ -140,7 +140,7 @@ public class GameControl {
         // Tool Items
         InventoryItem knife = new InventoryItem();
         knife.setInventoryType("Tools");
-        knife.setDescription("knife");
+        knife.setDescription("Knife");
         knife.setQuantityInStock(0);
         knife.setRequiredAmount(0);
         inventory[Item.knife.ordinal()] = knife;

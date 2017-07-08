@@ -7,6 +7,8 @@ package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.PlayerControl;
 import byui.cit260.notSoLost.exceptions.PlayerControlException;
+import byui.cit260.notSoLost.model.Game;
+import byui.cit260.notSoLost.model.Player;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -19,8 +21,6 @@ import notsolost.NotSoLost;
  * @author JSaenz
  */
 class HealthMenuView extends View {
-
-    double currentEnergy = 10;
 
     public final BufferedReader keyboard = NotSoLost.getInFile();
     protected final PrintWriter console = NotSoLost.getOutFile();
@@ -65,8 +65,11 @@ class HealthMenuView extends View {
     }
 
     private void currentEnergy() {
+        Game game = NotSoLost.getCurrentGame();
+        Player player = game.getPlayer();
+        double currentEnergy = player.getEnergyLevel();
 
-        System.out.println("\n*** displayWreckInventoryMenuView() function called ***");
+        System.out.println("\n Your current energy is: " + currentEnergy);
     }
 
     private double restEnergy() throws PlayerControlException {
@@ -74,6 +77,10 @@ class HealthMenuView extends View {
         double timeOfDay = 0;
 
         boolean valid = false; // initialize to not valid
+        
+        Game game = NotSoLost.getCurrentGame();
+        Player player = game.getPlayer();
+        double currentEnergy = player.getEnergyLevel();
 
         try {
             while (!valid) { // loop while an invalid value is entered
@@ -84,9 +91,10 @@ class HealthMenuView extends View {
                     System.out.println("\nPlease enter the time of day in military format e.g. 1300 for 1PM: ");
                     timeOfDay = Double.parseDouble(this.keyboard.readLine());
 
+                    
                     PlayerControl playerControl = new PlayerControl();
                     currentEnergy = playerControl.calcEnergyRestGain(currentEnergy, restHours, timeOfDay);
-                    System.out.println("\n your new energy is: " + currentEnergy);
+                    System.out.println("\n Your new energy is: " + currentEnergy);
                 } catch (PlayerControlException pce) {
                     System.out.println("\n" + pce.getMessage());
                 }
@@ -96,6 +104,8 @@ class HealthMenuView extends View {
         } catch (Exception e) {
             System.out.println("Error reading input: " + e.getMessage());
         }
+        
+        player.setEnergyLevel(currentEnergy);
         return currentEnergy;
     }
 

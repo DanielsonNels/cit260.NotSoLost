@@ -56,7 +56,7 @@ public class PlayerControl {
 
     public double calcEnergyRestGain(double currentEnergy, double restHours, double timeOfDay) throws PlayerControlException {
 
-        if (currentEnergy <= MIN_ENERGY) {
+        if (currentEnergy < MIN_ENERGY) {
             throw new PlayerControlException("You cannot rest with less than " + MIN_ENERGY + " energy points");
         }
 
