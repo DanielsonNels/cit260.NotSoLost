@@ -22,7 +22,6 @@ public class GameMenuView extends View {
                 + "\n----------------------------------------------"
                 + "\n| Game Menu                                  |"
                 + "\n----------------------------------------------"
-                + "\nJ  - Wreckage inventory menu"
                 + "\nK  - Inventory menu"
                 + "\nD  - Display tools"
                 + "\nB  - Build tools"
@@ -31,6 +30,7 @@ public class GameMenuView extends View {
                 + "\nX  - Drop resource"
                 + "\nP  - Pack Weight Calculator"
                 + "\nI  - View inventory"
+                + "\nIR - Print Inventory Report"
                 + "\nR  - View raft status"
                 + "\nO  - Health menu"
                 + "\nE  - Explore locations"
@@ -81,6 +81,12 @@ public class GameMenuView extends View {
             case "I":
                 this.viewInventoryMenuView();
                 break;
+            case "IR":
+                try {
+                    this.printInventoryReport();
+                } catch (GameControlException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             case "R": // View Raft status.
                 this.viewRaftStatusView();
                 break;
@@ -233,6 +239,22 @@ public class GameMenuView extends View {
 
     }
 
+    private void printInventoryReport() throws GameControlException {
+        // Prompt for and get the name of the file to print the report to
+        String filePath = this.getInput("Enter the file path for file where the "
+                           + "report is to be written.");
+        
+        DisplayInventoryView displayInventory = new DisplayInventoryView();
+        
+        try {
+            // save the report to the specified file
+            GameControl.saveReport(displayInventory, filePath);
+            this.console.println("Success! You saved the report.");
+        } catch (GameControlException ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+    }
+    
     private void displayHelpMenu() {
         // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
