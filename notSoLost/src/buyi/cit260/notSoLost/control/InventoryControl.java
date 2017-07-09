@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.stream.IntStream;
 import notsolost.NotSoLost;
 

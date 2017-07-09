@@ -6,20 +6,10 @@
 package buyi.cit260.notSoLost.view;
 
 import buyi.cit260.notSoLost.control.GameControl;
-import buyi.cit260.notSoLost.control.MapControl;
 import byui.cit260.notSoLost.exceptions.GameControlException;
-import byui.cit260.notSoLost.exceptions.MapControlException;
 import byui.cit260.notSoLost.exceptions.PlayerControlException;
-import byui.cit260.notSoLost.model.Actor;
-import java.awt.Point;
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import notsolost.NotSoLost;
 
 /**
  *
@@ -47,7 +37,7 @@ public class GameMenuView extends View {
                 + "\nM  - Move to a location"
                 + "\nL  - Display Map"
                 + "\nMR - Print Island Map Report"
-                + "\nRR - Print Raft Report"
+                + "\nRR - Save Raft Report to file"
                 + "\nH  - Help menu"
                 + "\nQ  - Quit to main menu"
                 + "\n----------------------------------------------");

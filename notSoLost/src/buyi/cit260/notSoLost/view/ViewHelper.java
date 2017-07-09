@@ -5,8 +5,6 @@
  */
 package buyi.cit260.notSoLost.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author JNewland

@@ -5,9 +5,6 @@
  */
 package buyi.cit260.notSoLost.view;
 
-import java.util.Scanner;
-import buyi.cit260.notSoLost.view.MainMenuView;
-
 /**
  *
  * @author JSaenz

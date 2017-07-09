@@ -9,7 +9,6 @@ import buyi.cit260.notSoLost.control.GameControl;
 import byui.cit260.notSoLost.model.Player;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import notsolost.NotSoLost;
 
 /**

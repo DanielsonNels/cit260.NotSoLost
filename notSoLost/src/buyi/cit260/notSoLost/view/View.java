@@ -7,7 +7,6 @@ package buyi.cit260.notSoLost.view;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import notsolost.NotSoLost;
 
 /**

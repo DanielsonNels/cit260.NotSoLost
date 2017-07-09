@@ -9,7 +9,6 @@ import buyi.cit260.notSoLost.control.PlayerControl;
 import byui.cit260.notSoLost.exceptions.PlayerControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import notsolost.NotSoLost;
 
 /**
